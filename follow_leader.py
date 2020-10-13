@@ -149,11 +149,11 @@ def moveSwarm(drone,poi):
 def updateSwarm():
     leader_location = april.get_state(GpsLocationChanged)
     moveSwarm(casey,leader_location)
-    moveSwarm(donatello,casey.get_state(GpsLocationChanged))
-    moveSwarm(leonardo,donatello.get_state(GpsLocationChanged))
-    moveSwarm(michelangelo,leonardo.get_state(GpsLocationChanged))
-    moveSwarm(raphael,michelangelo.get_state(GpsLocationChanged))
-    moveSwarm(splinter,raphael.get_state(GpsLocationChanged))
+    moveSwarm(donatello,leader_location)
+    moveSwarm(leonardo,leader_location)
+    moveSwarm(michelangelo,leader_location)
+    moveSwarm(raphael,leader_location)
+    moveSwarm(splinter,leader_location)
 
 
 def move(coords):
