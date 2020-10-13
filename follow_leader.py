@@ -66,7 +66,7 @@ casey(
 ).wait().success()
 
 casey(
-    moveTo(april.get_state(GpsLocationChanged)["latitude"],  april.get_state(GpsLocationChanged)["longitude"], 0.8617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+    moveTo(21.368492831528414, -157.712818, 0.6617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> PCMD(1, 0, 0, 0, 0, 0)
     >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait().success()
