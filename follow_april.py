@@ -111,8 +111,9 @@ splinter = olympe.Drone(splinter_ip)
 # april.connection()
 # casey.connection()
 
-swarm = [casey, donatello]
+swarm = [casey, donatello, leonardo, michelangelo, raphael, splinter]
 april.connection()
+
 for drone in swarm:
     drone.connection()
 
@@ -189,6 +190,15 @@ setInterval(moveDonatello,3)
     
 
 
+def moveLeonardo():
+    poi = april.get_state(GpsLocationChanged)
+    leonardo(
+        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
 
+# using
+setInterval(moveLeonardo,4)
 
 
