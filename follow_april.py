@@ -235,12 +235,17 @@ def moveCasey(coords):
 
 
 def move(index,coords):
+    print(route[index+1][0])
     april(
-        moveTo(coords[0], coords[1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(route[index+1][0], route[index+1][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
-    moveCasey(casey[index])
+    casey(
+        moveTo(route[index][0], route[index][1], 0.8, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
 
 
 
