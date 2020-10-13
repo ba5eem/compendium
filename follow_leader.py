@@ -139,7 +139,7 @@ for drone in swarm:
 
 def moveSwarm(drone,poi):
     drone(
-        moveTo(poi["latitude"],  poi["longitude"], poi["altitude"]-0.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
