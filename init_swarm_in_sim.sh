@@ -8,7 +8,7 @@
 
 #V=1 sphinx /opt/parrot-sphinx/usr/share/sphinx/drones/anafi4k.drone::name=drone1::stolen_interface=::simple_front_cam=true /opt/parrot-sphinx/usr/share/sphinx/drones/anafi4k.drone::name=drone2::stolen_interface=::pose="5 0 0.2 0 0 0"::with_front_cam=false
 
-V=1 sphinx /opt/parrot-sphinx/usr/share/sphinx/drones/anafi4k.drone::name=drone1::stolen_interface=::simple_front_cam=true /opt/parrot-sphinx/usr/share/sphinx/drones/anafi4k.drone::name=drone2::stolen_interface=::pose="5 0 0.1 5 0 0.1"::with_front_cam=false
+V=1 sphinx /opt/parrot-sphinx/usr/share/sphinx/drones/anafi4k.drone::name=drone1::stolen_interface=::simple_front_cam=true /opt/parrot-sphinx/usr/share/sphinx/drones/anafi4k.drone::name=drone2::stolen_interface=::pose="0 0 0.2 0 0 0.2"::with_front_cam=false
 
 
 # second set of pose was second drone
