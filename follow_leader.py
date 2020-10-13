@@ -9,13 +9,13 @@ from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 
 route = [
   [ 21.368492831528414, -157.712818 ],
-  # [ 21.368582663056824, -157.712818 ],
-  # [ 21.368672494585237, -157.712818 ],
-  # [ 21.36876232611365, -157.712818 ],
-  # [ 21.36885215764206, -157.712818 ],
-  # [ 21.368941989170473, -157.712818 ],
-  # [ 21.369031820698883, -157.712818 ],
-  # [ 21.369121652227296, -157.712818 ],
+  [ 21.368582663056824, -157.712818 ],
+  [ 21.368672494585237, -157.712818 ],
+  [ 21.36876232611365, -157.712818 ],
+  [ 21.36885215764206, -157.712818 ],
+  [ 21.368941989170473, -157.712818 ],
+  [ 21.369031820698883, -157.712818 ],
+  [ 21.369121652227296, -157.712818 ],
   [ 21.36921148375571, -157.712818 ],
   [ 21.36930131528412, -157.712818 ],
   [ 21.369391146812532, -157.712818 ],
@@ -137,8 +137,33 @@ for drone in swarm:
 
 
 
-def moveSwarm(drone,poi):
-    drone(
+def moveSwarm(poi):
+    casey(
+        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    donatello(
+        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    leonardo(
+        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    michelangelo(
+        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    raphael(
+        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    splinter(
         moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
@@ -146,14 +171,11 @@ def moveSwarm(drone,poi):
 
 
 
+
 def updateSwarm():
     leader_location = april.get_state(GpsLocationChanged)
-    moveSwarm(casey,leader_location)
-    moveSwarm(donatello,leader_location)
-    moveSwarm(leonardo,leader_location)
-    moveSwarm(michelangelo,leader_location)
-    moveSwarm(raphael,leader_location)
-    moveSwarm(splinter,leader_location)
+    moveSwarm(leader_location)
+
 
 
 def move(coords):
