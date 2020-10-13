@@ -37,7 +37,11 @@ def main():
 
     for drone in swarm:
     	drone.connect()
+    	
+    for drone in swarm:
     	drone(TakeOff()).wait().success()
+
+    for drone in swarm:
     	drone(moveBy( 0 , 0 , -3 , 0 )).wait()
 
     # april.connect()
