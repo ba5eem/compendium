@@ -37,41 +37,17 @@ def main():
 
     for drone in swarm:
     	drone.connect()
-    	
+
     for drone in swarm:
     	drone(TakeOff()).wait().success()
 
     for drone in swarm:
-    	drone(moveBy( 0 , 0 , -3 , 0 )).wait()
+    	drone(moveBy( 0 , 0 , -3 , 0 )).wait() 
 
-    # april.connect()
-    # casey.connect()
-    # donatello.connect()
-    # leonardo.connect()
-    # michelangelo.connect()
-    # raphael.connect()
-    # splinter.connect()
+    for drone in swarm: # x = back/forward z = right/left y = up/down
+    	drone(moveBy( 0 , -3 , 0 , 0 )).wait() # drone moves up left/-Z by 3
 
-
-    
-    # april(TakeOff()).wait().success()
-    # casey(TakeOff()).wait().success()
-    # donatello(TakeOff()).wait().success()
-    # leonardo(TakeOff()).wait().success()
-    # michelangelo(TakeOff()).wait().success()
-    # raphael(TakeOff()).wait().success()
-    # splinter(TakeOff()).wait().success()
-
-
-
-    # april(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    # casey(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    # donatello(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    # leonardo(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    # michelangelo(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    # raphael(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    # splinter(moveBy( back_forward , right_left , up_down , pivot )).wait()
-
+  
 
 
 if __name__ == "__main__":
