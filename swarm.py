@@ -52,12 +52,12 @@ def main():
 
 
     april(moveBy( -2 , 0 , 0 , 0 )).wait()
-    casey(moveBy( -2 , 0 , 0 , 0 )).wait()
-    donatello(moveBy( -2 , 0 , 0 , 0 )).wait()
-    leonardo(moveBy( -2 , 0 , 0 , 0 )).wait()
-    michelangelo(moveBy( -2 , 0 , 0 , 0 )).wait()
-    raphael(moveBy( -2 , 0 , 0 , 0 )).wait()
-    splinter(moveBy( -2 , 0 , 0 , 0 )).wait()
+    # casey(moveBy( -2 , 0 , 0 , 0 )).wait()
+    # donatello(moveBy( -2 , 0 , 0 , 0 )).wait()
+    # leonardo(moveBy( -2 , 0 , 0 , 0 )).wait()
+    # michelangelo(moveBy( -2 , 0 , 0 , 0 )).wait()
+    # raphael(moveBy( -2 , 0 , 0 , 0 )).wait()
+    # splinter(moveBy( -2 , 0 , 0 , 0 )).wait()
 
 
 
