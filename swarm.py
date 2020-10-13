@@ -2,7 +2,7 @@
 
 import olympe
 import time
-from olympe.messages.ardrone3.Piloting import TakeOff, Landing
+from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy
 
 # moveBy(0, 0, 0, 0)# (a,b,c,d) a = X-axis, b = Z-axis, c = Y-axis, d = Y-axis pivot
 
@@ -32,39 +32,32 @@ def main():
     splinter = olympe.Drone(splinter_ip)
 
     april.connect()
-    # casey.connect()
-    # donatello.connect()
-    # leonardo.connect()
-    # michelangelo.connect()
-    # raphael.connect()
-    # splinter.connect()
+    casey.connect()
+    donatello.connect()
+    leonardo.connect()
+    michelangelo.connect()
+    raphael.connect()
+    splinter.connect()
 
 
     
-    #april(TakeOff()).wait().success()
-    april(
- TakeOff()
- >> FlyingStateChanged(state="hovering", _timeout=5)# wait 5 seconds for hovering state
-).wait()
-    # casey(TakeOff()).wait().success()
-    # donatello(TakeOff()).wait().success()
-    # leonardo(TakeOff()).wait().success()
-    # michelangelo(TakeOff()).wait().success()
-    # raphael(TakeOff()).wait().success()
-    # splinter(TakeOff()).wait().success()
+    april(TakeOff()).wait().success()
+    casey(TakeOff()).wait().success()
+    donatello(TakeOff()).wait().success()
+    leonardo(TakeOff()).wait().success()
+    michelangelo(TakeOff()).wait().success()
+    raphael(TakeOff()).wait().success()
+    splinter(TakeOff()).wait().success()
 
 
-    april(
- moveBy(2, 0, 0, 0)# (a,b,c,d) a = X-axis, b = Z-axis, c = Y-axis, d = Y-axis pivot
- >> FlyingStateChanged(state="hovering", _timeout=5)
-).wait()
 
-    # casey(moveBy( -2 , 0 , 0 , 0 )).wait()
-    # donatello(moveBy( -2 , 0 , 0 , 0 )).wait()
-    # leonardo(moveBy( -2 , 0 , 0 , 0 )).wait()
-    # michelangelo(moveBy( -2 , 0 , 0 , 0 )).wait()
-    # raphael(moveBy( -2 , 0 , 0 , 0 )).wait()
-    # splinter(moveBy( -2 , 0 , 0 , 0 )).wait()
+    april(moveBy( back_forward , right_left , Y , pivot )).wait()
+    casey(moveBy( back_forward , right_left , Y , pivot )).wait()
+    donatello(moveBy( back_forward , right_left , Y , pivot )).wait()
+    leonardo(moveBy( back_forward , right_left , Y , pivot )).wait()
+    michelangelo(moveBy( back_forward , right_left , Y , pivot )).wait()
+    raphael(moveBy( back_forward , right_left , Y , pivot )).wait()
+    splinter(moveBy( back_forward , right_left , Y , pivot )).wait()
 
 
 
