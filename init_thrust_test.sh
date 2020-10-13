@@ -8,5 +8,5 @@
 
 #V=1 sphinx /opt/parrot-sphinx/usr/share/sphinx/drones/anafi4k.drone::name=drone1::stolen_interface=::simple_front_cam=true /opt/parrot-sphinx/usr/share/sphinx/drones/anafi4k.drone::name=drone2::stolen_interface=::pose="5 0 0.2 0 0 0"::with_front_cam=false
 
-V=1 sphinx april.drone::stolen_interface=::simple_front_cam=false casey.drone::stolen_interface=::simple_front_cam=false
+V=1 sphinx coconut.world april.drone::stolen_interface=::simple_front_cam=false casey.drone::stolen_interface=::simple_front_cam=false
 
