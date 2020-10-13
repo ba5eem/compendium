@@ -153,6 +153,7 @@ def move(coords):
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
+    moveCasey()
 
 
 
@@ -162,22 +163,17 @@ for coords in route:
     move(coords)
 
 def moveCasey():
-    poi = april.get_state(GpsLocationChanged)
     casey(
-        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(coords[0], coords[1], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
 
-def setInterval(func,time):
-    e = threading.Event()
-    while not e.wait(time):
-        func()
+
 
 
 
 # using
-setInterval(moveCasey,5)
 
 # def moveDonatello():
 #     poi = april.get_state(GpsLocationChanged)
