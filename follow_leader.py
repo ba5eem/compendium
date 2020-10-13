@@ -49,7 +49,7 @@ casey(
 # drone_location = drone.get_state(GpsLocationChanged)
 
 # move 10m N of original location
-april(moveTo(21.368492831528414, -157.712818, 0.8617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+april(moveTo(21.368492831528414, -157.712818, 0.8617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)).wait().success()
 april_location = april.get_state(GpsLocationChanged)
 
 # move casey to aprils location
