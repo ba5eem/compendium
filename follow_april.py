@@ -184,20 +184,20 @@ splinter_ip = "10.202.6.1"
 
 april = olympe.Drone(april_ip)
 casey = olympe.Drone(casey_ip)
-# donatello = olympe.Drone(donatello_ip)
-# leonardo = olympe.Drone(leonardo_ip)
-# michelangelo = olympe.Drone(michelangelo_ip)
-# raphael = olympe.Drone(raphael_ip)
-# splinter = olympe.Drone(splinter_ip)
+donatello = olympe.Drone(donatello_ip)
+leonardo = olympe.Drone(leonardo_ip)
+michelangelo = olympe.Drone(michelangelo_ip)
+raphael = olympe.Drone(raphael_ip)
+splinter = olympe.Drone(splinter_ip)
 
 # april.connection()
 # casey.connection()
 
-# swarm = [casey, donatello, leonardo, michelangelo, raphael, splinter]
+swarm = [casey, donatello, leonardo, michelangelo, raphael, splinter]
 april.connection()
-casey.connection()
-# for drone in swarm:
-#     drone.connection()
+
+for drone in swarm:
+    drone.connection()
 
 # Take-off
 def takeOff(drone):
@@ -215,20 +215,13 @@ def takeOff(drone):
     ).wait()
 
 takeOff(april)
-takeOff(casey);
-# for drone in swarm:
-#     takeOff(drone)
+
+for drone in swarm:
+    takeOff(drone)
 
 
 
 
-
-def moveCasey(coords):
-    casey(
-        moveTo(coords[0], coords[1], 0.8, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(1, 0, 0, 0, 0, 0)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
-    ).wait().success()
 
 
 
@@ -237,11 +230,36 @@ def moveCasey(coords):
 def move(index,coords):
     print(route[index+1][0])
     april(
-        moveTo(route[index+1][0], route[index+1][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(route[index+6][0], route[index+6][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     casey(
+        moveTo(route[index+5][0], route[index+5][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    donatello(
+        moveTo(route[index+4][0], route[index+4][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    leonardo(
+        moveTo(route[index+3][0], route[index+3][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    michelangelo(
+        moveTo(route[index+2][0], route[index+2][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    raphael(
+        moveTo(route[index+1][0], route[index+1][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+    splinter(
         moveTo(route[index][0], route[index][1], 0.8, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
