@@ -32,22 +32,22 @@ def main():
     splinter = olympe.Drone(splinter_ip)
 
     april.connect()
-    casey.connect()
-    donatello.connect()
-    leonardo.connect()
-    michelangelo.connect()
-    raphael.connect()
-    splinter.connect()
+    # casey.connect()
+    # donatello.connect()
+    # leonardo.connect()
+    # michelangelo.connect()
+    # raphael.connect()
+    # splinter.connect()
 
 
     
     april(TakeOff()).wait().success()
-    casey(TakeOff()).wait().success()
-    donatello(TakeOff()).wait().success()
-    leonardo(TakeOff()).wait().success()
-    michelangelo(TakeOff()).wait().success()
-    raphael(TakeOff()).wait().success()
-    splinter(TakeOff()).wait().success()
+    # casey(TakeOff()).wait().success()
+    # donatello(TakeOff()).wait().success()
+    # leonardo(TakeOff()).wait().success()
+    # michelangelo(TakeOff()).wait().success()
+    # raphael(TakeOff()).wait().success()
+    # splinter(TakeOff()).wait().success()
 
 
 
