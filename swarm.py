@@ -41,7 +41,11 @@ def main():
 
 
     
-    april(TakeOff()).wait().success()
+    #april(TakeOff()).wait().success()
+    april(
+ TakeOff()
+ >> FlyingStateChanged(state="hovering", _timeout=5)# wait 5 seconds for hovering state
+).wait()
     # casey(TakeOff()).wait().success()
     # donatello(TakeOff()).wait().success()
     # leonardo(TakeOff()).wait().success()
@@ -50,8 +54,11 @@ def main():
     # splinter(TakeOff()).wait().success()
 
 
+    april(
+ moveBy(2, 0, 0, 0)# (a,b,c,d) a = X-axis, b = Z-axis, c = Y-axis, d = Y-axis pivot
+ >> FlyingStateChanged(state="hovering", _timeout=5)
+).wait()
 
-    april(moveBy( -2 , 0 , 0 , 0 )).wait()
     # casey(moveBy( -2 , 0 , 0 , 0 )).wait()
     # donatello(moveBy( -2 , 0 , 0 , 0 )).wait()
     # leonardo(moveBy( -2 , 0 , 0 , 0 )).wait()
