@@ -255,7 +255,7 @@ def move(index,coords):
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     raphael(
-        moveTo(route[index][0], route[index][1], 1, 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(route[index][0], route[index][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
