@@ -18,7 +18,7 @@ splinter_ip = "10.202.6.1"
 # left with ' - '
 back_forward = 0 # X
 right_left = 0 # Z
-up_down = 5
+up_down = -3
 pivot = 0
 
 
@@ -31,13 +31,13 @@ def main():
     raphael = olympe.Drone(raphael_ip)
     splinter = olympe.Drone(splinter_ip)
 
-    # april.connect()
-    # casey.connect()
-    # donatello.connect()
-    # leonardo.connect()
-    # michelangelo.connect()
-    # raphael.connect()
-    # splinter.connect()
+    april.connect()
+    casey.connect()
+    donatello.connect()
+    leonardo.connect()
+    michelangelo.connect()
+    raphael.connect()
+    splinter.connect()
 
 
     
