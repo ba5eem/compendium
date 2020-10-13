@@ -134,7 +134,7 @@ casey(
 
 def move(coords):
     april(
-        moveTo(coods[0], coods[1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(coords[0], coords[1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
