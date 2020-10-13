@@ -138,6 +138,8 @@ def move(coords):
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
+    updateSwarm()
+
 
 
 for coords in route:
@@ -158,7 +160,7 @@ def setInterval(func,time):
     while not e.wait(time):
         func()
 
-def foo():
+def updateSwarm():
     leader_location = april.get_state(GpsLocationChanged)
     casey(
         moveTo(leader_location["latitude"],  leader_location["longitude"], leader_location["altitude"]-0.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
@@ -167,7 +169,7 @@ def foo():
     ).wait().success()
     
 
-setInterval(foo,5)
+
 
 
 
