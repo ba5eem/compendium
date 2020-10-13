@@ -111,7 +111,7 @@ casey = olympe.Drone(casey_ip)
 # april.connection()
 # casey.connection()
 
-swarm = [casey, donatello, leonardo, michelangelo, raphael, splinter]
+# swarm = [casey, donatello, leonardo, michelangelo, raphael, splinter]
 april.connection()
 casey.connection()
 # for drone in swarm:
