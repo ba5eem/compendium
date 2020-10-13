@@ -778,32 +778,32 @@ for drone in swarm:
 
 def moveSwarm(poi):
     casey(
-        moveTo(poi[1][0][0],  poi[1][0][1], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(poi[0][1][0],  poi[0][1][1], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     donatello(
-        moveTo(poi[2][0][0],  poi[2][0][1], 0.8, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(poi[0][2][0],  poi[0][2][1], 0.8, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     leonardo(
-        moveTo(poi[3][0][0],  poi[3][0][1], 1.1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(poi[0][3][0],  poi[0][3][1], 1.1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     michelangelo(
-        moveTo(poi[4][0][0],  poi[4][0][1], 0.7, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(poi[0][4][0],  poi[0][4][1], 0.7, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     raphael(
-        moveTo(poi[5][0][0],  poi[5][0][1], 1.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(poi[0][5][0],  poi[0][5][1], 1.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     splinter(
-        moveTo(poi[6][0][0],  poi[6][0][1], 0.6, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(poi[0][6][0],  poi[0][6][1], 0.6, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
