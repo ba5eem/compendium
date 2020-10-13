@@ -750,7 +750,7 @@ splinter = olympe.Drone(splinter_ip)
 # april.connection()
 # casey.connection()
 
-swarm = [casey, donatello, leonardo, michelangelo, raphael, splinter]
+swarm = [casey, donatello, leonardo, michelangelo, raphael]
 april.connection()
 for drone in swarm:
     drone.connection()
@@ -846,11 +846,11 @@ def move(poi):
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
-    splinter(
-        moveTo(poi[6][0][0],  poi[6][0][1], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(1, 0, 0, 0, 0, 0)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
-    ).wait().success()
+    # splinter(
+    #     moveTo(poi[6][0][0],  poi[6][0][1], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+    #     >> PCMD(1, 0, 0, 0, 0, 0)
+    #     >> FlyingStateChanged(state="hovering", _timeout=5)
+    # ).wait().success()
 
 
 
