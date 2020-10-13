@@ -8,8 +8,7 @@ from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 
 drone = olympe.Drone("10.202.0.1")
 drone.connection()
-# 21.432657 
-# -157.786460
+
 # Take-off
 drone(
     FlyingStateChanged(state="hovering", _policy="check")
@@ -38,7 +37,7 @@ drone(
 
 # Go back home
 drone(
-    moveTo(drone_location["21.432657"],  drone_location["-157.786460"], drone_location["3"], MoveTo_Orientation_mode.TO_TARGET, 0.0)
+    moveTo(drone_location["latitude"],  drone_location["longitude"], drone_location["altitude"], MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> FlyingStateChanged(state="hovering", _timeout=5)
     >> moveToChanged(latitude=drone_location["latitude"], longitude=drone_location["longitude"], altitude=drone_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
     >> FlyingStateChanged(state="hovering", _timeout=5)
