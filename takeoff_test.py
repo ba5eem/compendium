@@ -40,7 +40,7 @@ april(
     TakeOff()
     >> casey(TakeOff())
     >> donatello(TakeOff())
-    >> april(moveTo(21.366561453667554, -157.71084046847082, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    >> moveTo(21.366561453667554, -157.71084046847082, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> casey(moveTo(21.366561453667554, -157.71084046847082, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0))
     >> donatello(moveTo(21.366561453667554, -157.71084046847082, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 ).wait().success()
