@@ -26,21 +26,18 @@ splinter = olympe.Drone(splinter_ip)
 # drone(TakeOff()).wait()
 
 
-swarm = [april, casey, donatello, leonardo, michelangelo, raphael, splinter]
 
-
-for drone in swarm:
-    drone.connection()
-
-
-for drone in swarm:
-    drone(TakeOff()).wait()
 
 april(
     TakeOff()
     >> casey(TakeOff())
     >> donatello(TakeOff())
-    >> moveTo(21.366561453667554, -157.71084046847082, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-    >> casey(moveTo(21.366561453667554, -157.71084046847082, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-    >> donatello(moveTo(21.366561453667554, -157.71084046847082, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 ).wait().success()
+
+
+for coords in route:
+    april(
+        moveTo(coords[0], coords[1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> casey(moveTo(coords[0], coords[1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        >> donatello(moveTo(coords[0], coords[1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    ).wait().success()
