@@ -67,7 +67,7 @@ def setInterval(func,time):
 
 def foo():
     leader_location = april.get_state(GpsLocationChanged)
-    print leader_location
+    print leader_location["latitude"]
 
 setInterval(foo,5)
 
