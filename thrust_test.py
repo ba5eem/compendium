@@ -41,6 +41,9 @@ def main():
     april(olympe.messages.ardrone3.Piloting.PCMD(0, 50, 100, 100, 100, 10, _timeout=10, _no_expect=False, _float_tol=(1e-07, 1e-09)))
     olympe.messages.ardrone3.GPSSettingsState.HomeChanged(latitude=21.432657, longitude=-157.786460, altitude=-1, _policy='check_wait', _float_tol=(1e-07, 1e-09))
 
+
+    drone(moveTo(21.432657, -157.786460, 0.8617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+
     april(olympe.messages.ardrone3.Piloting.NavigateHome(1))
 
         
