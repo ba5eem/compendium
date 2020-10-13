@@ -14,15 +14,17 @@ michelangelo_ip = "10.202.4.1"
 raphael_ip = "10.202.5.1"
 splinter_ip = "10.202.6.1"
 
-# backwards with ' - '
-# left with ' - '
-back_forward = 0 # X
-right_left = 0 # Z
-up_down = 5
-pivot = 0
+# back = -1
+# foreward = 1
+# right = 1
+# left = -1
+# up = -1
+# down = 1
+# pivot = 0
 
 
 def main():
+		swarm = [april, casey, donatello, leonardo, michelangelo, raphael, splinter]
     april = olympe.Drone(april_ip)
     casey = olympe.Drone(casey_ip)
     donatello = olympe.Drone(donatello_ip)
@@ -31,33 +33,38 @@ def main():
     raphael = olympe.Drone(raphael_ip)
     splinter = olympe.Drone(splinter_ip)
 
-    april.connect()
-    casey.connect()
-    donatello.connect()
-    leonardo.connect()
-    michelangelo.connect()
-    raphael.connect()
-    splinter.connect()
+    for drone in swarm:
+    	drone.connect()
+    	drone(TakeOff()).wait().success()
+    	drone(moveBy( 0 , 0 , -3 , 0 )).wait()
+
+    # april.connect()
+    # casey.connect()
+    # donatello.connect()
+    # leonardo.connect()
+    # michelangelo.connect()
+    # raphael.connect()
+    # splinter.connect()
 
 
     
-    april(TakeOff()).wait().success()
-    casey(TakeOff()).wait().success()
-    donatello(TakeOff()).wait().success()
-    leonardo(TakeOff()).wait().success()
-    michelangelo(TakeOff()).wait().success()
-    raphael(TakeOff()).wait().success()
-    splinter(TakeOff()).wait().success()
+    # april(TakeOff()).wait().success()
+    # casey(TakeOff()).wait().success()
+    # donatello(TakeOff()).wait().success()
+    # leonardo(TakeOff()).wait().success()
+    # michelangelo(TakeOff()).wait().success()
+    # raphael(TakeOff()).wait().success()
+    # splinter(TakeOff()).wait().success()
 
 
 
-    april(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    casey(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    donatello(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    leonardo(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    michelangelo(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    raphael(moveBy( back_forward , right_left , up_down , pivot )).wait()
-    splinter(moveBy( back_forward , right_left , up_down , pivot )).wait()
+    # april(moveBy( back_forward , right_left , up_down , pivot )).wait()
+    # casey(moveBy( back_forward , right_left , up_down , pivot )).wait()
+    # donatello(moveBy( back_forward , right_left , up_down , pivot )).wait()
+    # leonardo(moveBy( back_forward , right_left , up_down , pivot )).wait()
+    # michelangelo(moveBy( back_forward , right_left , up_down , pivot )).wait()
+    # raphael(moveBy( back_forward , right_left , up_down , pivot )).wait()
+    # splinter(moveBy( back_forward , right_left , up_down , pivot )).wait()
 
 
 
