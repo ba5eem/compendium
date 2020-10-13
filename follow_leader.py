@@ -103,33 +103,32 @@ casey.connection()
 
 
 # Take-off
-april(
-    FlyingStateChanged(state="hovering", _policy="check")
-    | FlyingStateChanged(state="flying", _policy="check")
-    | (
-        GPSFixStateChanged(fixed=1, _timeout=10, _policy="check_wait")
-        >> (
-            TakeOff(_no_expect=True)
-            & FlyingStateChanged(
-                state="hovering", _timeout=10, _policy="check_wait")
+def takeOff(drone):
+    drone(
+        FlyingStateChanged(state="hovering", _policy="check")
+        | FlyingStateChanged(state="flying", _policy="check")
+        | (
+            GPSFixStateChanged(fixed=1, _timeout=10, _policy="check_wait")
+            >> (
+                TakeOff(_no_expect=True)
+                & FlyingStateChanged(
+                    state="hovering", _timeout=10, _policy="check_wait")
+            )
         )
-    )
-).wait()
+    ).wait()
 
 
-# Take-off
-casey(
-    FlyingStateChanged(state="hovering", _policy="check")
-    | FlyingStateChanged(state="flying", _policy="check")
-    | (
-        GPSFixStateChanged(fixed=1, _timeout=10, _policy="check_wait")
-        >> (
-            TakeOff(_no_expect=True)
-            & FlyingStateChanged(
-                state="hovering", _timeout=10, _policy="check_wait")
-        )
-    )
-).wait()
+takeOff(april)
+takeOff(casey)
+
+
+def updateSwarm():
+    leader_location = april.get_state(GpsLocationChanged)
+    casey(
+        moveTo(leader_location["latitude"],  leader_location["longitude"], leader_location["altitude"]-0.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
 
 
 def move(coords):
@@ -160,13 +159,7 @@ def setInterval(func,time):
     while not e.wait(time):
         func()
 
-def updateSwarm():
-    leader_location = april.get_state(GpsLocationChanged)
-    casey(
-        moveTo(leader_location["latitude"],  leader_location["longitude"], leader_location["altitude"]-0.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(1, 0, 0, 0, 0, 0)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
-    ).wait().success()
+
     
 
 
