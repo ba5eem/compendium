@@ -25,13 +25,11 @@ def main():
     casey = olympe.Drone(casey_ip)
 
 
-    swarm = [april, casey]
+    april.connect()
+    casey.connect()
 
-    for drone in swarm:
-    	drone.connect()
-
-    for drone in swarm:
-    	drone(TakeOff()).wait().success()
+    april(TakeOff()).wait().success()
+    casey(TakeOff()).wait().success()
 
     casey(moveBy( -1 , 0 , 0 , 0 )).wait()     
 
