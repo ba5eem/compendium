@@ -54,13 +54,13 @@ april(
 
 # move 10m N of original location
 #april(moveTo(21.368492831528414, -157.712818, 0.8617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)).wait().success()
-april_location = april.get_state(GpsLocationChanged)
+#april_location = april.get_state(GpsLocationChanged)
 
 # move casey to aprils location
 casey(
-    moveTo(april_location["latitude"],  april_location["longitude"], 0.6617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+    moveTo(april.get_state(GpsLocationChanged)["latitude"],  april.get_state(GpsLocationChanged)["longitude"], 0.6617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> FlyingStateChanged(state="hovering", _timeout=5)
-    >> moveToChanged(latitude=april_location["latitude"], longitude=april_location["longitude"], altitude=april_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
+    >> moveToChanged(latitude=april.get_state(GpsLocationChanged)["latitude"], longitude=april.get_state(GpsLocationChanged)["longitude"], altitude=april.get_state(GpsLocationChanged)["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
     >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait()
 
