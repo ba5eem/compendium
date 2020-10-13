@@ -35,3 +35,9 @@ for drone in swarm:
 
 for drone in swarm:
     drone(TakeOff()).wait()
+
+april(
+    TakeOff()
+    >> casey(TakeOff())
+    >> donatello(TakeOff())
+).wait().success()
