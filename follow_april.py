@@ -141,7 +141,12 @@ takeOff(casey);
 
 
 
-
+def moveCasey(coords):
+    casey(
+        moveTo(coords[0], coords[1], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
 
 
 
@@ -153,7 +158,7 @@ def move(coords):
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
-    moveCasey()
+    moveCasey(coords)
 
 
 
@@ -162,12 +167,7 @@ def move(coords):
 for coords in route:
     move(coords)
 
-def moveCasey():
-    casey(
-        moveTo(coords[0], coords[1], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(1, 0, 0, 0, 0, 0)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
-    ).wait().success()
+
 
 
 
