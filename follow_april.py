@@ -234,25 +234,23 @@ def moveCasey(coords):
 
 
 
-def move(coords):
+def move(index,coords):
     april(
         moveTo(coords[0], coords[1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
-    moveCasey(coords)
+    moveCasey(casey[index])
 
 
 
 
 
-for coords in route:
-    move(coords)
 
 
+for index, coords in enumerate(route):
+    move(index,coords)
 
-for coords in casey:
-    moveCasey(coords)
 
 
 
