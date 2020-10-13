@@ -102,20 +102,20 @@ splinter_ip = "10.202.6.1"
 
 april = olympe.Drone(april_ip)
 casey = olympe.Drone(casey_ip)
-donatello = olympe.Drone(donatello_ip)
-leonardo = olympe.Drone(leonardo_ip)
-michelangelo = olympe.Drone(michelangelo_ip)
-raphael = olympe.Drone(raphael_ip)
-splinter = olympe.Drone(splinter_ip)
+# donatello = olympe.Drone(donatello_ip)
+# leonardo = olympe.Drone(leonardo_ip)
+# michelangelo = olympe.Drone(michelangelo_ip)
+# raphael = olympe.Drone(raphael_ip)
+# splinter = olympe.Drone(splinter_ip)
 
 # april.connection()
 # casey.connection()
 
 swarm = [casey, donatello, leonardo, michelangelo, raphael, splinter]
 april.connection()
-
-for drone in swarm:
-    drone.connection()
+casey.connection()
+# for drone in swarm:
+#     drone.connection()
 
 # Take-off
 def takeOff(drone):
@@ -133,8 +133,9 @@ def takeOff(drone):
     ).wait()
 
 takeOff(april)
-for drone in swarm:
-    takeOff(drone)
+takeOff(casey);
+# for drone in swarm:
+#     takeOff(drone)
 
 
 
@@ -152,6 +153,7 @@ def move(coords):
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
+    moveCasey()
 
 
 
@@ -175,30 +177,41 @@ def moveCasey():
     ).wait().success()
 
 # using
-setInterval(moveCasey,2)
+# setInterval(moveCasey,2)
 
-def moveDonatello():
-    poi = april.get_state(GpsLocationChanged)
-    donatello(
-        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(1, 0, 0, 0, 0, 0)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
-    ).wait().success()
+# def moveDonatello():
+#     poi = april.get_state(GpsLocationChanged)
+#     donatello(
+#         moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+#         >> PCMD(1, 0, 0, 0, 0, 0)
+#         >> FlyingStateChanged(state="hovering", _timeout=5)
+#     ).wait().success()
 
-# using
-setInterval(moveDonatello,3)
+# # using
+# setInterval(moveDonatello,3)
     
 
 
-def moveLeonardo():
-    poi = april.get_state(GpsLocationChanged)
-    leonardo(
-        moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(1, 0, 0, 0, 0, 0)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
-    ).wait().success()
+# def moveLeonardo():
+#     poi = april.get_state(GpsLocationChanged)
+#     leonardo(
+#         moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+#         >> PCMD(1, 0, 0, 0, 0, 0)
+#         >> FlyingStateChanged(state="hovering", _timeout=5)
+#     ).wait().success()
 
-# using
-setInterval(moveLeonardo,4)
+# # using
+# setInterval(moveLeonardo,4)
+
+# def moveMichelangelo():
+#     poi = april.get_state(GpsLocationChanged)
+#     michelangelo(
+#         moveTo(poi["latitude"],  poi["longitude"], 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+#         >> PCMD(1, 0, 0, 0, 0, 0)
+#         >> FlyingStateChanged(state="hovering", _timeout=5)
+#     ).wait().success()
+
+# # using
+# setInterval(moveMichelangelo,4)
 
 
