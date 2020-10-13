@@ -58,7 +58,7 @@ april(
 #april_location = april.get_state(GpsLocationChanged)
 
 # move casey to aprils location
-april_location = drone.get_state(GpsLocationChanged)
+april_location = april.get_state(GpsLocationChanged)
 casey(
     moveTo(april_location["latitude"],  april_location["longitude"], 0.8617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> PCMD(1, 0, 0, 0, 0, 0)
