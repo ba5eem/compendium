@@ -231,37 +231,37 @@ def move(index,coords):
 
     april(
         moveTo(route[index+6][0], route[index+6][1], 0.7, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(0, 50, 100, 100, 100, 10)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=1)
     ).wait().success()
     casey(
         moveTo(route[index][0], route[index][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(0, 50, 100, 100, 100, 10)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=2)
     ).wait().success()
     donatello(
         moveTo(route[index+6][0], route[index+6][1], 0.7, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(0, 50, 100, 100, 100, 10)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=3)
     ).wait().success()
     leonardo(
         moveTo(route[index][0], route[index][1], 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(0, 50, 100, 100, 100, 10)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=4)
     ).wait().success()
     michelangelo(
         moveTo(route[index+6][0], route[index+6][1], 0.7, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(0, 50, 100, 100, 100, 10)
+        >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     raphael(
         moveTo(route[index][0], route[index][1], 1, 0.9, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(0, 50, 100, 100, 100, 10)
+        >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
     splinter(
         moveTo(route[index+6][0], route[index+6][1], 0.7, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(0, 50, 100, 100, 100, 10)
+        >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
 
