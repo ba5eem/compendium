@@ -42,11 +42,13 @@ def main():
     	drone(TakeOff()).wait().success()
 
     for drone in swarm:
-    	drone(moveBy( 0 , 0 , -3 , 0 )).wait() 
+    	drone(moveBy( 0 , 0 , -2 , 0 )).wait() 
 
     for drone in swarm: # x = back/forward z = right/left y = up/down
-    	drone(moveBy( 0 , -3 , 0 , 0 )).wait() # drone moves up left/-Z by 3
+    	drone(moveBy( 0 , -2 , 0 , 0 )).wait() # drone moves up left/-Z by 3
 
+    for drone in swarm: # x = back/forward z = right/left y = up/down
+    	drone(moveBy( 2 , 0 , 0 , 0 )).wait() # drone moves up foreward by 3
   
 
 
