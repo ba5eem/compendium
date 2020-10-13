@@ -7,7 +7,6 @@
     low_gpu="0"
     with_front_cam="0"
     simple_front_cam="0"
-    swing_color="black"
     with_gimbal="1"
     with_kalamos="0"
     sdcard_serial="__undefined__"
