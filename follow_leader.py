@@ -1,4 +1,5 @@
 import math
+import threading
 import olympe
 from olympe.messages.ardrone3.Piloting import TakeOff, moveBy, Landing, moveTo, Circle, PCMD
 from olympe.messages.ardrone3.PilotingState import moveToChanged, FlyingStateChanged, PositionChanged, AttitudeChanged
@@ -59,14 +60,16 @@ april(
 
 # move casey to aprils location
 
-casey(
-    moveTo(april.get_state(GpsLocationChanged)["latitude"],  april.get_state(GpsLocationChanged)["longitude"], 0.8617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-    >> PCMD(1, 0, 0, 0, 0, 0)
-    >> FlyingStateChanged(state="hovering", _timeout=5)
-).wait().success()
+def setInterval(func,time):
+    e = threading.Event()
+    while not e.wait(time):
+        func()
 
-casey(
-    moveTo(21.368492831528414, -157.712818, 0.6617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-    >> PCMD(1, 0, 0, 0, 0, 0)
-    >> FlyingStateChanged(state="hovering", _timeout=5)
-).wait().success()
+def foo():
+    leader_location = april.get_state(GpsLocationChanged)
+    print leader_location
+
+setInterval(foo,5)
+
+
+
