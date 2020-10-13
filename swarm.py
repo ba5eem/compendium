@@ -24,7 +24,7 @@ splinter_ip = "10.202.6.1"
 
 
 def main():
-		swarm = [april, casey, donatello, leonardo, michelangelo, raphael, splinter]
+		
     april = olympe.Drone(april_ip)
     casey = olympe.Drone(casey_ip)
     donatello = olympe.Drone(donatello_ip)
@@ -32,6 +32,8 @@ def main():
     michelangelo = olympe.Drone(michelangelo_ip)
     raphael = olympe.Drone(raphael_ip)
     splinter = olympe.Drone(splinter_ip)
+
+    swarm = [april, casey, donatello, leonardo, michelangelo, raphael, splinter]
 
     for drone in swarm:
     	drone.connect()
