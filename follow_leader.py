@@ -68,7 +68,7 @@ def setInterval(func,time):
 def foo():
     leader_location = april.get_state(GpsLocationChanged)
     casey(
-        moveTo(leader_location["latitude"],  leader_location["longitude"], drone_location["altitude"]-0.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(leader_location["latitude"],  leader_location["longitude"], leader_location["altitude"]-0.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
