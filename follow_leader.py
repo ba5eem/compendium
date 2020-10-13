@@ -94,13 +94,27 @@ route = [
 
 april_ip = "10.202.0.1" 
 casey_ip = "10.202.1.1"
+donatello_ip = "10.202.2.1"
+leonardo_ip = "10.202.3.1"
+michelangelo_ip = "10.202.4.1"
+raphael_ip = "10.202.5.1"
+splinter_ip = "10.202.6.1"
 
 april = olympe.Drone(april_ip)
 casey = olympe.Drone(casey_ip)
+donatello = olympe.Drone(donatello_ip)
+leonardo = olympe.Drone(leonardo_ip)
+michelangelo = olympe.Drone(michelangelo_ip)
+raphael = olympe.Drone(raphael_ip)
+splinter = olympe.Drone(splinter_ip)
 
+# april.connection()
+# casey.connection()
+
+swarm = [casey, donatello, leonardo, michelangelo, raphael, splinter]
 april.connection()
-casey.connection()
-
+for drone in swarm:
+    drone.connection()
 
 # Take-off
 def takeOff(drone):
@@ -117,18 +131,25 @@ def takeOff(drone):
         )
     ).wait()
 
-
 takeOff(april)
-takeOff(casey)
+for drone in swarm:
+    takeOff(drone)
+
+
+
+def moveSwarm(drone,poi):
+    drone(
+        moveTo(poi["latitude"],  poi["longitude"], poi["altitude"]-0.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> PCMD(1, 0, 0, 0, 0, 0)
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
+
 
 
 def updateSwarm():
     leader_location = april.get_state(GpsLocationChanged)
-    casey(
-        moveTo(leader_location["latitude"],  leader_location["longitude"], leader_location["altitude"]-0.2, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        >> PCMD(1, 0, 0, 0, 0, 0)
-        >> FlyingStateChanged(state="hovering", _timeout=5)
-    ).wait().success()
+    for drone in swarm:
+        moveSwarm(drone,leader_location)
 
 
 def move(coords):
@@ -145,19 +166,6 @@ for coords in route:
     move(coords)
 
 
-
-# drone_location = drone.get_state(GpsLocationChanged)
-
-# move 10m N of original location
-#april(moveTo(21.368492831528414, -157.712818, 0.8617546558380127, MoveTo_Orientation_mode.TO_TARGET, 0.0)).wait().success()
-#april_location = april.get_state(GpsLocationChanged)
-
-# move casey to aprils location
-
-def setInterval(func,time):
-    e = threading.Event()
-    while not e.wait(time):
-        func()
 
 
     
