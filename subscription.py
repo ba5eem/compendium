@@ -8,24 +8,19 @@ from olympe.messages.ardrone3.PilotingState import (
 )
 
 drone = olympe.Drone("10.202.0.1")
-casey = olympe.Drone("10.202.1.1")
-casey.connect()
-casey(
-    FlyingStateChanged(state="hovering")
-    | (TakeOff() & FlyingStateChanged(state="hovering"))
-).wait()
+# casey = olympe.Drone("10.202.1.1")
+# casey.connect()
+# casey(
+#     FlyingStateChanged(state="hovering")
+#     | (TakeOff() & FlyingStateChanged(state="hovering"))
+# ).wait()
 
 class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        print(event["latitude"])
         #awakeSwarm(latitude,longitude)
-        print(
-            "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
-                **event.args
-            )
-        )
+        print("{latitude}".format(**event.args))
 
 
 
