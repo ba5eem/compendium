@@ -178,6 +178,7 @@ if __name__ == "__main__":
     every_event_listener.subscribe()
     drone.connect()
     casey.connect()
+    donatello.connect()
     every_event_listener.unsubscribe()
 
     # You can also subscribe/unsubscribe automatically using a with statement
