@@ -4,8 +4,9 @@ import olympe
 from olympe.messages.ardrone3.Piloting import TakeOff, moveBy, Landing, moveTo, Circle, PCMD
 from olympe.messages.ardrone3.PilotingState import moveToChanged, FlyingStateChanged, PositionChanged, AttitudeChanged
 from olympe.messages.ardrone3.GPSSettingsState import GPSFixStateChanged
-from olympe.messages.ardrone3.PilotingState import GpsLocationChanged
+from olympe.messages.ardrone3.PilotingState import GpsLocationChanged, PositionChanged
 from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
+
 
 def findOffset(lat,lng,n,e):
     earthRadius=6378137
@@ -105,15 +106,17 @@ casey(
 
 
 casey_location = casey.get_state(GpsLocationChanged)
+casey_poi_changed = casey.get_state(PositionChanged)
+print(casey_poi_changed)
 
-poi = makeLineFormation(casey_location["latitude"],  casey_location["longitude"])
+# poi = makeLineFormation(casey_location["latitude"],  casey_location["longitude"])
 
-april(
-    moveTo(poi[0],  poi[1], casey_location["altitude"], MoveTo_Orientation_mode.TO_TARGET, 0.0)
-    >> FlyingStateChanged(state="hovering", _timeout=5)
-    >> moveToChanged(latitude=poi[0], longitude=poi[1], altitude=casey_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
-    >> FlyingStateChanged(state="hovering", _timeout=5)
-).wait()
+# april(
+#     moveTo(poi[0],  poi[1], casey_location["altitude"], MoveTo_Orientation_mode.TO_TARGET, 0.0)
+#     >> FlyingStateChanged(state="hovering", _timeout=5)
+#     >> moveToChanged(latitude=poi[0], longitude=poi[1], altitude=casey_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
+#     >> FlyingStateChanged(state="hovering", _timeout=5)
+# ).wait()
 
 
 
