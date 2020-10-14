@@ -13,22 +13,25 @@ olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}}) #quiet t
 
 drone = olympe.Drone("10.202.0.1")
 casey = olympe.Drone("10.202.1.1")
-casey.connect()
-casey(
-    FlyingStateChanged(state="hovering")
-    | (TakeOff() & FlyingStateChanged(state="hovering"))
-).wait()
+
 
 class FlightListener(olympe.EventListener):
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
         print(event.args["latitude"], event.args["longitude"])
-        awakeSwarm(event.args["latitude"], event.args["longitude"])
+        awakeCasey(event.args["latitude"], event.args["longitude"])
 
 
+def awakeCasey(lat,lng):
+    casey.connect()
+    casey(
+        FlyingStateChanged(state="hovering")
+        | (TakeOff() & FlyingStateChanged(state="hovering"))
+    ).wait()
+    moveCasey(lat,lng)
 
 
-def awakeSwarm(lat,lng):
+def moveCasey(lat,lng):
     casey(
         moveTo(lat,  lng, 0.7, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
