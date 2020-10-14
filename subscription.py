@@ -1,11 +1,15 @@
 import olympe
-from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy
+from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy, moveTo
 from olympe.messages.ardrone3.PilotingState import (
     PositionChanged,
     AlertStateChanged,
     FlyingStateChanged,
     NavigateHomeStateChanged,
+    moveToChanged
 )
+from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
+olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}}) #quiet the output
+
 
 drone = olympe.Drone("10.202.0.1")
 casey = olympe.Drone("10.202.1.1")
@@ -16,18 +20,17 @@ casey(
 ).wait()
 
 class FlightListener(olympe.EventListener):
-
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        awakeSwarm("{latitude}".format(**event.args),"{longitude}".format(**event.args))
-        # print("{latitude}".format(**event.args))
+        print(event.args["latitude"], event.args["longitude"])
+        awakeSwarm(event.args["latitude"], event.args["longitude"])
+
 
 
 
 def awakeSwarm(lat,lng):
-    print(lat,lng)
     casey(
-        moveTo(lat,  lng, 0.8, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        moveTo(lat,  lng, 0.7, MoveTo_Orientation_mode.TO_TARGET, 0.0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
         >> moveToChanged(latitude=lat, longitude=lng, altitude=0.8, orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
         >> FlyingStateChanged(state="hovering", _timeout=5)
@@ -42,6 +45,10 @@ with FlightListener(drone):
         | (TakeOff() & FlyingStateChanged(state="hovering"))
     ).wait()
     drone(moveBy(-5, 0, 0, 0)).wait()
+    drone(moveBy(10, 0, 0, 0)).wait()
     drone(Landing()).wait()
     drone(FlyingStateChanged(state="landed")).wait()
     drone.disconnect()
+
+
+
