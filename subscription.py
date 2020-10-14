@@ -208,9 +208,9 @@ if __name__ == "__main__":
                 >> moveBy(7, 0, 0, 0) #3 east 
                 >> moveBy(0, 5, 0, 0) #4 south
                 >> moveBy(5, 0, 0, 0) #5 east
-                >> moveBy(0, -30, 0, 0) #6 north
+                >> moveBy(0, -10, 0, 0) #6 north
                 >> moveBy(-3, 0, 0, 0) #7 west
-                >> moveBy(0, 30, 0, 0) #8 south
+                >> moveBy(0, 10, 0, 0) #8 south
             ).wait().success()
             drone(Landing()).wait()
             assert drone(FlyingStateChanged(state="landed")).wait().success()
