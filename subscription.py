@@ -19,19 +19,11 @@ DRONE_IP = "10.202.0.1"
 casey_ip = "10.202.1.1"
 casey = olympe.Drone(casey_ip)
 
-def caseyTakeOff(drone):
-    drone(
-        FlyingStateChanged(state="hovering", _policy="check")
-        | FlyingStateChanged(state="flying", _policy="check")
-        | (
-            GPSFixStateChanged(fixed=1, _timeout=10, _policy="check_wait")
-            >> (
-                TakeOff(_no_expect=True)
-                & FlyingStateChanged(
-                    state="hovering", _timeout=10, _policy="check_wait")
-            )
-        )
-    ).wait()
+def caseyTakeOff():
+    casey(
+        FlyingStateChanged(state="hovering")
+        | (TakeOff() & FlyingStateChanged(state="hovering"))
+    ).wait().success()
 
 
 def print_event(event):
@@ -103,7 +95,7 @@ class FlightListener(olympe.EventListener):
     def onTakeOff(self, event, scheduler):
         # This method will be called once for each completed sequence of event
         # FlyingStateChanged: motor_ramping -> takingoff -> hovering
-        caseyTakeOff(casey)
+        caseyTakeOff()
         print("The drone has taken off!")
         self.has_observed_takeoff = True
 
