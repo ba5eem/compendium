@@ -203,8 +203,8 @@ if __name__ == "__main__":
                 | (TakeOff() & FlyingStateChanged(state="hovering"))
             ).wait().success()
             assert drone(
-                moveBy(12.5, 10, 0, 0) #1 Seast (EAST, 0, 0 , 0)
-                >> moveBy(12.5, -10, 0, 0) #2 northeast (0, -North, 0, 0)
+                moveBy(12.5, 20, 0, 0) #1 Seast (EAST, 0, 0 , 0)
+                >> moveBy(12.5, -20, 0, 0) #2 northeast (0, -North, 0, 0)
                 >> moveBy(-7.5, -5, 0, 0) #3 NW 
                 >> moveBy(-5, 5, 0, 0) #4 southWest (0, SOUTH, 0, 0)
                 >> moveBy(-5, -5, 0, 0) #3 NW 
