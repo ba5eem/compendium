@@ -101,7 +101,7 @@ class FlightListener(olympe.EventListener):
         # FlyingStateChanged: motor_ramping -> takingoff -> hovering
         caseyTakeOff()
         print("The drone has taken off!")
-        self.has_observed_takeoff = False
+        self.has_observed_takeoff = True
 
     # The `default` listener method is only called when no other method
     # matched the event message The `olympe.listen_event` decorator usage
@@ -131,9 +131,9 @@ if __name__ == "__main__":
                 | (TakeOff() & FlyingStateChanged(state="hovering"))
             ).wait().success()
             assert drone(moveTo(21.368403,  -157.708, 0.89, MoveTo_Orientation_mode.TO_TARGET, 0.0)).wait().success()
-
+            drone.disconnect()
             # drone(Landing()).wait()
             # assert drone(FlyingStateChanged(state="landed")).wait().success()
 
-    assert flight_listener.has_observed_takeoff
-    drone.disconnect()
+
+    
