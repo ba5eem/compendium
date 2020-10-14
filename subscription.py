@@ -2,6 +2,7 @@
 
 import olympe
 from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy
+from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 from olympe.messages.ardrone3.PilotingState import (
     PositionChanged,
     SpeedChanged,
@@ -60,6 +61,7 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
+        casey(moveTo(event.args["latitude"],  events.args["longitude"], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         print(
             "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
                 **event.args
