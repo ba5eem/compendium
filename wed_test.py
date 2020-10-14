@@ -72,6 +72,7 @@ casey = olympe.Drone(casey_ip)
 # splinter = olympe.Drone(splinter_ip)
 
 
+olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}})
 
 # swarm = [april, casey, donatello, leonardo, michelangelo, raphael, splinter]
 
