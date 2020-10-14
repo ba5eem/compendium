@@ -64,25 +64,23 @@ class FlightListener(olympe.EventListener):
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
         casey(moveTo(event.args["latitude"],  event.args["longitude"], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-
-        # 21.368403, -157.70895944577202
-        # print(
-        #     "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
-        #         **event.args
-        #     )
-        # )
+        print(
+            "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
+                **event.args
+            )
+        )
 
     @olympe.listen_event(AttitudeChanged())
     def onAttitudeChanged(self, event, scheduler):
-        #print("roll = {roll} pitch = {pitch} yaw = {yaw}".format(**event.args))
+        print("roll = {roll} pitch = {pitch} yaw = {yaw}".format(**event.args))
 
     @olympe.listen_event(AltitudeAboveGroundChanged())
     def onAltitudeAboveGroundChanged(self, event, scheduler):
-        #print("height above ground = {altitude}".format(**event.args))
+        print("height above ground = {altitude}".format(**event.args))
 
     @olympe.listen_event(SpeedChanged())
     def onSpeedChanged(self, event, scheduler):
-        #print("speedXYZ = ({speedX}, {speedY}, {speedZ})".format(**event.args))
+        print("speedXYZ = ({speedX}, {speedY}, {speedZ})".format(**event.args))
 
     # You can also handle multiple message types with the same method
     @olympe.listen_event(
@@ -91,7 +89,7 @@ class FlightListener(olympe.EventListener):
     def onStateChanged(self, event, scheduler):
         # Here, since every "*StateChanged" message has a `state` argument
         # we can handle them uniformly to print the current associated state
-        #print("{} = {}".format(event.message.name, event.args["state"]))
+        print("{} = {}".format(event.message.name, event.args["state"]))
 
     # You can also monitor a sequence of event using the complete Olympe DSL syntax
     @olympe.listen_event(
@@ -102,7 +100,7 @@ class FlightListener(olympe.EventListener):
         # This method will be called once for each completed sequence of event
         # FlyingStateChanged: motor_ramping -> takingoff -> hovering
         caseyTakeOff()
-        #print("The drone has taken off!")
+        print("The drone has taken off!")
         self.has_observed_takeoff = True
 
     # The `default` listener method is only called when no other method
@@ -113,7 +111,7 @@ class FlightListener(olympe.EventListener):
     # events are dropped silently when the event queue is full).
     @olympe.listen_event(queue_size=10)
     def default(self, event, scheduler):
-        #print_event(event)
+        print_event(event)
 
 
 if __name__ == "__main__":
