@@ -131,9 +131,8 @@ if __name__ == "__main__":
                 | (TakeOff() & FlyingStateChanged(state="hovering"))
             ).wait().success()
             assert drone(moveBy(10, 0, 0, 0)).wait().success()
-            drone(moveTo(21.368403,  -157.70895944577202, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)).wait()
-            drone(Landing()).wait()
-            assert drone(FlyingStateChanged(state="landed")).wait().success()
+            #drone(Landing()).wait()
+            #assert drone(FlyingStateChanged(state="landed")).wait().success()
 
     assert flight_listener.has_observed_takeoff
-    drone.disconnect()
+    drone(moveTo(21.368403,  -157.70895944577202, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)).wait()
