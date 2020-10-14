@@ -205,10 +205,10 @@ if __name__ == "__main__":
             assert drone(
                 moveBy(10, 15, 0, 0) #1 Seast (EAST, 0, 0 , 0)
                 >> moveBy(10, -15, 0, 0) #2 northeast (0, -North, 0, 0)
-                >> moveBy(-7.5, -7.5, 0, 0) #3 NW 
+                >> moveBy(-7.5, -7, 0, 0) #3 NW 
                 >> moveBy(-2.5, 5, 0, 0) #4 southWest (0, SOUTH, 0, 0)
                 >> moveBy(-2.5, -5, 0, 0) #3 NW 
-                >> moveBy(-7.5, 7.5, 0, 0) #4 southWest (0, SOUTH, 0, 0)
+                >> moveBy(-7.5, 7, 0, 0) #4 southWest (0, SOUTH, 0, 0)
                 # >> moveBy(0, -10, 0, 0) #6 north
                 # >> moveBy(-5, 0, 0, 0) #7 west (-WEST, 0 , 0, 0)
                 # >> moveBy(0, 10, 0, 0) #8 south
