@@ -120,7 +120,8 @@ print(casey_poi_changed)
 
 
 
-
+flying_sub = casey.subscribe(
+    lambda event, controller: print("Position State =", event.args["state"]), PositionChanged())
 
 
 
