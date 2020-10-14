@@ -63,10 +63,20 @@ def makeLineFormation(lat,lng):
 
 DRONE_IP = "10.202.0.1"
 casey_ip = "10.202.1.1"
+donatello_ip = "10.202.2.1"
+# leonardo_ip = "10.202.3.1"
+# michelangelo_ip = "10.202.4.1"
+# raphael_ip = "10.202.5.1"
+# splinter_ip = "10.202.6.1"
 casey = olympe.Drone(casey_ip)
+donatello = olympe.Drone(donatello_ip)
+# leonardo = olympe.Drone(leonardo_ip)
+# michelangelo = olympe.Drone(michelangelo_ip)
+# raphael = olympe.Drone(raphael_ip)
+# splinter = olympe.Drone(splinter_ip)
 
-def caseyTakeOff():
-    casey(
+def followerTakeOff(drone):
+    drone(
         FlyingStateChanged(state="hovering")
         | (TakeOff() & FlyingStateChanged(state="hovering"))
     ).wait().success()
@@ -106,8 +116,10 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        coords = findOffset(event.args["latitude"],event.args["longitude"],-1,0)
-        casey(moveTo(coords[0], coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-1,0)
+        donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],1,0)
+        casey(moveTo(casey_coords[0], casey_coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        donatello(moveTo(donatello_coords[0], donatello_coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         print(
             "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
                 **event.args
@@ -143,7 +155,8 @@ class FlightListener(olympe.EventListener):
     def onTakeOff(self, event, scheduler):
         # This method will be called once for each completed sequence of event
         # FlyingStateChanged: motor_ramping -> takingoff -> hovering
-        caseyTakeOff()
+        followerTakeOff(casey)
+        followerTakeOff(donatello)
         print("The drone has taken off!")
         self.has_observed_takeoff = True
 
