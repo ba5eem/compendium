@@ -44,7 +44,7 @@ with FlightListener(drone):
         FlyingStateChanged(state="hovering")
         | (TakeOff() & FlyingStateChanged(state="hovering"))
     ).wait()
-    drone(moveBy(10, 0, 0, 0)).wait()
+    drone(moveBy(-5, 0, 0, 0)).wait()
     drone(Landing()).wait()
     drone(FlyingStateChanged(state="landed")).wait()
     drone.disconnect()
