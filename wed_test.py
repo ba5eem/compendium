@@ -97,21 +97,21 @@ def takeOff(drone):
 for drone in swarm:
     takeOff(drone)
 
-april(
+casey(
     moveBy(10, 0, 0, math.pi)
     >> PCMD(1, 0, 0, 0, 0, 0)
     >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait().success()
 
 
-april_location = april.get_state(GpsLocationChanged)
+casey_location = casey.get_state(GpsLocationChanged)
 
-poi = makeLineFormation(april_location["latitude"],  april_location["longitude"])
+poi = makeLineFormation(casey_location["latitude"],  casey_location["longitude"])
 
-casey(
-    moveTo(poi[0],  poi[1], april_location["altitude"], MoveTo_Orientation_mode.TO_TARGET, 0.0)
+april(
+    moveTo(poi[0],  poi[1], casey_location["altitude"], MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> FlyingStateChanged(state="hovering", _timeout=5)
-    >> moveToChanged(latitude=poi[0], longitude=poi[1], altitude=april_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
+    >> moveToChanged(latitude=poi[0], longitude=poi[1], altitude=casey_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
     >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait()
 
