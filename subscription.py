@@ -133,9 +133,9 @@ if __name__ == "__main__":
             assert drone(
                 moveBy(10, 0, 0, 0)
                 >> moveBy(10, 0, 0, 0)
-                >> moveBy(10, 0, 0, 0)
-                >> moveBy(10, 0, 0, 0)
-                >> moveBy(10, 0, 0, 0)
+                >> moveBy(0, 10, 0, 0)
+                >> moveBy(-10, 0, 0, 0)
+                >> moveBy(0, -10, 0, 0)
             ).wait().success()
             drone(Landing()).wait()
             assert drone(FlyingStateChanged(state="landed")).wait().success()
