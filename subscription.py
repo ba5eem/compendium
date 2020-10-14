@@ -46,7 +46,7 @@ def print_event(event):
 class EveryEventListener(olympe.EventListener):
     @olympe.listen_event()
     def onAnyEvent(self, event, scheduler):
-        #print_event(event)
+        print_event(event)
 
 
 # olympe.EventListener implements the visitor pattern.
