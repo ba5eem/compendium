@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 
-import math
 import olympe
 from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy, moveTo
 from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
@@ -19,47 +18,6 @@ from olympe.messages.ardrone3.PilotingState import (
 # this does a square flight pattern
 
 olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}})
-
-def findOffset(lat,lng,n,e):
-    earthRadius=6378137
-    dLat = n/earthRadius
-    dLngM = earthRadius*math.cos(math.pi*lat/180)
-    dLng = e/dLngM
-    latOffset = lat + dLat * 180/math.pi
-    lngOffset = lng + dLng * 180/math.pi
-    return [latOffset,lngOffset]
-
-
-
-def makeTriangleFormation(lat,lng):
-    april = findOffset(lat,lng,20,0)
-    rapheal = findOffset(lat,lng,-40,0)
-    michaelangelo = findOffset(lat,lng,-20,20)
-    donatello = findOffset(lat,lng,-20,-20)
-    splinter = findOffset(lat,lng,-40,40)
-    leonardo = findOffset(lat,lng,-40,-40)
-    casey = findOffset(lat,lng,-70,0)
-    return [april, rapheal, michaelangelo, donatello, splinter, leonardo, casey]
-
-def makeSquareFormation(lat,lng):
-    april = findOffset(lat,lng,40,0) # leader middle
-    rapheal = findOffset(lat,lng,-40,0) # middle bottom
-    michaelangelo = findOffset(lat,lng,0,40) # top right
-    donatello = findOffset(lat,lng,0,-40) # top left
-    splinter = findOffset(lat,lng,0,0) # middle top
-    leonardo = findOffset(lat,lng,-40,-40) # bottom left
-    casey = findOffset(lat,lng,-40,40) # bottom right
-    return [april, rapheal, michaelangelo, donatello, splinter, leonardo, casey]
-
-def makeLineFormation(lat,lng):
-    # april = findOffset(lat,lng,100,0) 
-    # rapheal = findOffset(lat,lng,80,0) 
-    # michaelangelo = findOffset(lat,lng,60, 0) 
-    # donatello = findOffset(lat,lng,40,0) 
-    # splinter = findOffset(lat,lng,20,0) 
-    # leonardo = findOffset(lat,lng,0,0) 
-    casey = findOffset(lat,lng,-20,0) 
-    return casey
 
 DRONE_IP = "10.202.0.1"
 casey_ip = "10.202.1.1"
@@ -106,8 +64,7 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        coords = findOffset(event.args["latitude"],event.args["longitude"],-70,0) # triangle formation
-        casey(moveTo(coords[0], coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        casey(moveTo(event.args["latitude"],  event.args["longitude"], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         print(
             "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
                 **event.args
