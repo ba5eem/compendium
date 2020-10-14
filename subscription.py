@@ -14,6 +14,16 @@ olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}}) #quiet t
 drone = olympe.Drone("10.202.0.1")
 casey = olympe.Drone("10.202.1.1")
 
+casey.connect()
+casey(
+    FlyingStateChanged(state="hovering")
+    | (TakeOff() & FlyingStateChanged(state="hovering"))
+).wait()
+drone.connect()
+drone(
+    FlyingStateChanged(state="hovering")
+    | (TakeOff() & FlyingStateChanged(state="hovering"))
+).wait()
 
 class FlightListener(olympe.EventListener):
     @olympe.listen_event(PositionChanged())
@@ -36,19 +46,10 @@ def moveCasey(lat,lng):
 
 
 with FlightListener(drone):
-    drone.connect()
-    drone(
-        FlyingStateChanged(state="hovering")
-        | (TakeOff() & FlyingStateChanged(state="hovering"))
-    ).wait()
     drone(moveBy(-5, 0, 0, 0)).wait()
     drone(moveBy(10, 0, 0, 0)).wait()
+
     
-    casey.connect()
-    casey(
-        FlyingStateChanged(state="hovering")
-        | (TakeOff() & FlyingStateChanged(state="hovering"))
-    ).wait()
     # drone(Landing()).wait()
     # drone(FlyingStateChanged(state="landed")).wait()
     # drone.disconnect()
