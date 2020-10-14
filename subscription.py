@@ -19,7 +19,8 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        awakeSwarm(latitude,longitude)
+        print(event["latitude"])
+        #awakeSwarm(latitude,longitude)
         print(
             "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
                 **event.args
