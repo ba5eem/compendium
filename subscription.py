@@ -203,21 +203,22 @@ if __name__ == "__main__":
                 | (TakeOff() & FlyingStateChanged(state="hovering"))
             ).wait().success()
             assert drone(
-                moveBy(5, 0, 0, 0) #1 east
-                >> moveBy(0, -5, 0, 0) #2 north
-                >> moveBy(7, 0, 0, 0) #3 east 
-                >> moveBy(0, 5, 0, 0) #4 south
-                >> moveBy(5, 0, 0, 0) #5 east
-                >> moveBy(0, -10, 0, 0) #6 north
-                >> moveBy(-5, 0, 0, 0) #7 west
-                >> moveBy(0, 10, 0, 0) #8 south
-                >> moveBy(-5, 0, 0, 0) #7 west
-                >> moveBy(0, -10, 0, 0) #6 north
-                >> moveBy(5, 0, 0, 0) #5 east
-                >> moveBy(0, 5, 0, 0) #4 south
-                >> moveBy(7, 0, 0, 0) #3 east 
-                >> moveBy(0, 5, 0, 0) #4 south
-                >> moveBy(-5, 0, 0, 0) #7 west
+                moveBy(5, 10, 0, 0) #1 Seast (EAST, 0, 0 , 0)
+                >> moveBy(5, -10, 0, 0) #2 northeast (0, -North, 0, 0)
+                >> moveBy(-5, -5, 0, 0) #3 NW 
+                >> moveBy(-2.5, 5, 0, 0) #4 southWest (0, SOUTH, 0, 0)
+                >> moveBy(-2.5, -5, 0, 0) #3 NW 
+                >> moveBy(-2.5, 5, 0, 0) #4 southWest (0, SOUTH, 0, 0)
+                # >> moveBy(0, -10, 0, 0) #6 north
+                # >> moveBy(-5, 0, 0, 0) #7 west (-WEST, 0 , 0, 0)
+                # >> moveBy(0, 10, 0, 0) #8 south
+                # >> moveBy(-5, 0, 0, 0) #7 west
+                # >> moveBy(0, -10, 0, 0) #6 north
+                # >> moveBy(5, 0, 0, 0) #5 east
+                # >> moveBy(0, 5, 0, 0) #4 south
+                # >> moveBy(7, 0, 0, 0) #3 east 
+                # >> moveBy(0, 5, 0, 0) #4 south
+                # >> moveBy(-5, 0, 0, 0) #7 west
             ).wait().success()
             drone(Landing()).wait()
             assert drone(FlyingStateChanged(state="landed")).wait().success()
