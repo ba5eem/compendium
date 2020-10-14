@@ -61,6 +61,20 @@ def makeLineFormation(lat,lng):
     casey = findOffset(lat,lng,-20,0) 
     return casey
 
+def east(n):
+    return moveBy(n, 0, 0, 0) 
+
+def south(n):
+    return moveBy(0, n, 0, 0) 
+
+
+def north(n):
+    return moveBy(0, -n, 0, 0) 
+
+
+def west(n):
+    return moveBy(-n, 0, 0, 0) 
+
 DRONE_IP = "10.202.0.1"
 casey_ip = "10.202.1.1"
 donatello_ip = "10.202.2.1"
@@ -189,11 +203,14 @@ if __name__ == "__main__":
                 | (TakeOff() & FlyingStateChanged(state="hovering"))
             ).wait().success()
             assert drone(
-                moveBy(10, 0, 0, 0)
-                >> moveBy(10, 0, 0, 0)
-                >> moveBy(0, 10, 0, 0)
-                >> moveBy(-10, 0, 0, 0)
-                >> moveBy(0, -10, 0, 0)
+                east(50) # 1
+                >> north(50) # 2
+                >> east(70) # 3
+                >> south(50) # 4
+                >> east(50) # 5
+                >> north(300) # 6
+                >> west(30) # 7
+                >> south(300) # 8
             ).wait().success()
             drone(Landing()).wait()
             assert drone(FlyingStateChanged(state="landed")).wait().success()
