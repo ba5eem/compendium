@@ -106,7 +106,7 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        coords = findOffset(event.args["latitude"],event.args["longitude"],-10,0)
+        coords = findOffset(event.args["latitude"],event.args["longitude"],-1,0)
         casey(moveTo(coords[0], coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         print(
             "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
