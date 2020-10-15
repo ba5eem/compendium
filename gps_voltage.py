@@ -61,7 +61,7 @@ drone_location = drone.get_state(GpsLocationChanged)
 coords = [21.377386152841197, -157.712818]
 # Go back home
 drone(
-    moveBy(0, -100, 0, math.pi)
+    moveBy(0, -1000, 0, math.pi)
     >> casey(moveTo(coords[0], coords[1], 50, MoveTo_Orientation_mode.TO_TARGET, 0.0))
     >> donatello(moveTo(coords[0], coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
     >> FlyingStateChanged(state="hovering", _timeout=5)
