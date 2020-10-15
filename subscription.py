@@ -82,14 +82,24 @@ donatello_ip = "10.202.2.1"
 # michelangelo_ip = "10.202.4.1"
 # raphael_ip = "10.202.5.1"
 # splinter_ip = "10.202.6.1"
+april = olympe.Drone(DRONE_IP)
 casey = olympe.Drone(casey_ip)
 donatello = olympe.Drone(donatello_ip)
+april_loc = april.get_state(GpsLocationChanged)
 # leonardo = olympe.Drone(leonardo_ip)
 # michelangelo = olympe.Drone(michelangelo_ip)
 # raphael = olympe.Drone(raphael_ip)
 # splinter = olympe.Drone(splinter_ip)
 
-def followerTakeOff(drone):
+
+april(moveBy(0, -5, 0, 0, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09)))
+
+while april_loc["altitude"] >= 25:
+    takeOff(casey)
+
+
+
+def takeOff(drone):
     drone(
         FlyingStateChanged(state="hovering")
         | (TakeOff() & FlyingStateChanged(state="hovering"))
