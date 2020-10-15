@@ -142,13 +142,17 @@ drone_location = drone.get_state(GpsLocationChanged)
 #     >> FlyingStateChanged(state="hovering", _timeout=5)
 # ).wait()
 
-
+def move(coords):
+    drone(
+        moveTo(coords[0], coords[1], 100, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        >> casey(moveTo(coords[0], coords[1], 50, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        >> donatello(moveTo(coords[0], coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        >> FlyingStateChanged(state="hovering", _timeout=5)
+    ).wait().success()
 
 
 for coords in route:
-    drone(moveTo(coords[0], coords[1], 50, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-    casey(moveTo(coords[0], coords[1], 50, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-    donatello(moveTo(coords[0], coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    move(coords)
 
 # Go back home
 drone(
