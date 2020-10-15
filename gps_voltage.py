@@ -24,7 +24,9 @@ donatello = olympe.Drone(donatello_ip)
 
 # Take-off
 # drone(TakeOff()).wait()
-
+april.connect()
+casey.connect()
+donatello.connect()
 
 
 
