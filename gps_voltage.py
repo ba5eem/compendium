@@ -53,7 +53,21 @@ donatello(
 
 
 
-
+drone(
+    moveBy(0, -100, 0, math.pi)
+    >> PCMD(1, 0, 0, 0, 0, 0)
+    >> FlyingStateChanged(state="hovering", _timeout=5)
+).wait().success()
+casey(
+    moveBy(0, -50, 0, math.pi)
+    >> PCMD(1, 0, 0, 0, 0, 0)
+    >> FlyingStateChanged(state="hovering", _timeout=5)
+).wait().success()
+donatello(
+    moveBy(0, -10, 0, math.pi)
+    >> PCMD(1, 0, 0, 0, 0, 0)
+    >> FlyingStateChanged(state="hovering", _timeout=5)
+).wait().success()
 
 
 drone_location = drone.get_state(GpsLocationChanged)
