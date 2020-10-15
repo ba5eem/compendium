@@ -61,26 +61,14 @@ coords = [21.377386152841197, -157.712818]
 # Go back home
 drone(
     moveTo(coords[0], coords[1], 100, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+    >> casey(moveTo(coords[0], coords[1], 50, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    >> donatello(moveTo(coords[0], coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
     >> FlyingStateChanged(state="hovering", _timeout=5)
     >> moveToChanged(latitude=drone_location["latitude"], longitude=drone_location["longitude"], altitude=drone_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
     >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait()
 
-# Go back home
-casey(
-    moveTo(coords[0], coords[1], 100, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-    >> FlyingStateChanged(state="hovering", _timeout=5)
-    >> moveToChanged(latitude=drone_location["latitude"], longitude=drone_location["longitude"], altitude=drone_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
-    >> FlyingStateChanged(state="hovering", _timeout=5)
-).wait()
 
-# Go back home
-donatello(
-    moveTo(coords[0], coords[1], 100, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-    >> FlyingStateChanged(state="hovering", _timeout=5)
-    >> moveToChanged(latitude=drone_location["latitude"], longitude=drone_location["longitude"], altitude=drone_location["altitude"], orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
-    >> FlyingStateChanged(state="hovering", _timeout=5)
-).wait()
 
 # Go back home
 drone(
