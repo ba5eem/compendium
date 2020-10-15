@@ -150,7 +150,7 @@ def move(coords):
         >> PCMD(1, 0, 0, 0, 0, 0)
         >> FlyingStateChanged(state="hovering", _timeout=5)
     ).wait().success()
-    updateSwarm()
+
 
 for coords in route:
     move(coords)
