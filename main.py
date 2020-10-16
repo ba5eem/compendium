@@ -45,6 +45,8 @@ april(
 april(
     moveTo(21.291352585005598,  -157.83071637153628, 20, MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> moveToChanged(latitude=21.291352585005598, longitude=-157.83071637153628, altitude=20, orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
+    >> moveTo(21.289915280551007,  -157.83071637153628, 20, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+    >> moveToChanged(latitude=21.289915280551007, longitude=-157.83071637153628, altitude=20, orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
     >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait()
 
