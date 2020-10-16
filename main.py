@@ -41,17 +41,23 @@ april(
 #     | (TakeOff() & FlyingStateChanged(state="hovering"))
 # ).wait().success()
 
-
 april(
-	moveTo(21.291352585005598, -157.83071637153628, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
-	>> moveTo(21.289915280551007, -157.83071637153628, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
-	>> moveTo(21.290633932778302, -157.82994507905642, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
-	>> moveTo(21.290633932778302, -157.83148766401615, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
-	>> moveTo(21.291352585005598, -157.82994507905642, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
-	>> moveTo(21.289915280551007, -157.82994507905642, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
-	>> moveTo(21.291352585005598, -157.83148766401615, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
-	>> moveTo(21.289915280551007, -157.83148766401615, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
-	).wait().success()
+    moveTo(21.291352585005598,  -157.83071637153628, 20, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+    >> moveToChanged(latitude=21.291352585005598, longitude=-157.83071637153628, altitude=20, orientation_mode=MoveTo_Orientation_mode.TO_TARGET, status='DONE', _policy='wait')
+    >> FlyingStateChanged(state="hovering", _timeout=5)
+).wait()
+
+
+# april(
+# 	moveTo(21.291352585005598, -157.83071637153628, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
+# 	>> moveTo(21.289915280551007, -157.83071637153628, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
+# 	>> moveTo(21.290633932778302, -157.82994507905642, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
+# 	>> moveTo(21.290633932778302, -157.83148766401615, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
+# 	>> moveTo(21.291352585005598, -157.82994507905642, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
+# 	>> moveTo(21.289915280551007, -157.82994507905642, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
+# 	>> moveTo(21.291352585005598, -157.83148766401615, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
+# 	>> moveTo(21.289915280551007, -157.83148766401615, 20, MoveTo_Orientation_mode(0), 90, _timeout=20, _no_expect=False, _float_tol=(1e-07, 1e-09))
+# 	).wait().success()
 
 
 # april(moveTo(21.291352585005598, -157.83071637153628, 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
