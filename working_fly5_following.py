@@ -131,12 +131,6 @@ class FlightListener(olympe.EventListener):
             )
         )
 
-    
-
-    @olympe.listen_event(MoveToChanged_Status())
-    def onAttitudeChanged(self, event, scheduler):
-        print("--------->HEADING = {heading}".format(**event.args))    
-
     @olympe.listen_event(AttitudeChanged())
     def onAttitudeChanged(self, event, scheduler):
         print("roll = {roll} pitch = {pitch} yaw = {yaw}".format(**event.args))
