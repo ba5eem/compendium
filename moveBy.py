@@ -23,7 +23,7 @@ drone(
     >> moveTo(21.37313, -157.7098, 15, MoveTo_Orientation_mode.NONE, 0.0)
     >> moveToChanged(status="DONE")
     >> Landing()
-)
+).wait().success()
 
 
 
