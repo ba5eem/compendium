@@ -9,7 +9,7 @@ from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 
 
 DRONE_IP = "10.202.0.1"
-olympe.Drone(DRONE_IP)
+drone = olympe.Drone(DRONE_IP)
 # if __name__ == "__main__":
 #     with olympe.Drone(DRONE_IP) as drone:
 drone.connect()
