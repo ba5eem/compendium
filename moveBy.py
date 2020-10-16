@@ -5,6 +5,7 @@ from olympe.messages.ardrone3.Piloting import TakeOff, moveTo, Landing
 from olympe.messages.ardrone3.PilotingState import FlyingStateChanged
 from olympe.messages.camera import start_recording, stop_recording
 from olympe.messages import gimbal
+from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 
 DRONE_IP = "10.202.0.1"
 
