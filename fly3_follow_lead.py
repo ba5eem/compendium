@@ -15,8 +15,6 @@ from olympe.messages.ardrone3.PilotingState import (
     moveToChanged
 )
 
-from olympe.enums.ardrone3.PilotingState import MoveToChanged_Status
-
 # working subscription - drone leader takes off and moves away
 # casey takes off after drone leader takes off and will follow leaders position
 # this does a square flight pattern
@@ -135,8 +133,8 @@ class FlightListener(olympe.EventListener):
 
     
 
-    @olympe.listen_event(MoveToChanged_Status())
-    def onAttitudeChanged(self, event, scheduler):
+    @olympe.listen_event(moveToChanged())
+    def onmoveToChanged(self, event, scheduler):
         print("--------->HEADING = {heading}".format(**event.args))    
 
     @olympe.listen_event(AttitudeChanged())
