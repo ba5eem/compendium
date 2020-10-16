@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 import olympe
-from olympe.messages.ardrone3.Piloting import TakeOff, moveBy, Landing
+from olympe.messages.ardrone3.Piloting import TakeOff, moveTo, Landing
 from olympe.messages.ardrone3.PilotingState import FlyingStateChanged
 from olympe.messages.camera import start_recording, stop_recording
 from olympe.messages import gimbal
@@ -16,14 +16,8 @@ if __name__ == "__main__":
         flyingAction = drone(
             TakeOff()
             >> FlyingStateChanged(state="hovering", _timeout=5)
-            >> moveBy(0, -40, 0, 0)
-            >> FlyingStateChanged(state="hovering", _timeout=5)
-            >> moveBy(40, 0, 0, 0)
-            >> FlyingStateChanged(state="hovering", _timeout=5)
-            >> moveBy(0, 40, 0, 0)
-            >> FlyingStateChanged(state="hovering", _timeout=5)
-            >> moveBy(-40, 0, 0, 0)
-            >> FlyingStateChanged(state="hovering", _timeout=5)
+            >> moveTo(21.291352, -157.830716, 15, MoveTo_Orientation_mode.NONE, 0.0)
+            >> MoveToChanged(status="DONE")
             >> Landing()
         )
 
