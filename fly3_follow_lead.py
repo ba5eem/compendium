@@ -12,6 +12,7 @@ from olympe.messages.ardrone3.PilotingState import (
     AlertStateChanged,
     FlyingStateChanged,
     NavigateHomeStateChanged,
+    moveToChanged
 )
 
 # working subscription - drone leader takes off and moves away
