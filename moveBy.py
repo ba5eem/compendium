@@ -9,10 +9,12 @@ from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 
 
 DRONE_IP = "10.202.0.1"
+casey = olympe.drone("10.202.1.1")
 drone = olympe.Drone(DRONE_IP)
 # if __name__ == "__main__":
 #     with olympe.Drone(DRONE_IP) as drone:
 drone.connect()
+casey.connect()
 
 # Start a flying action asynchronously
 drone(
@@ -23,9 +25,20 @@ drone(
     >> moveTo(21.37313, -157.7098, 15, MoveTo_Orientation_mode.NONE, 0.0)
     >> moveToChanged(status="DONE")
     >> Landing()
+)
+
+casey(
+    TakeOff()
+    >> FlyingStateChanged(state="hovering", _timeout=5)
+    >> moveTo(21.3708, -157.709881, 15, MoveTo_Orientation_mode.NONE, 0.0)
+    >> moveToChanged(status="DONE")
+    >> moveTo(21.368464, -157.71239, 15, MoveTo_Orientation_mode.NONE, 0.0)
+    >> moveToChanged(status="DONE")
+    >> Landing()
 ).wait().success()
 
-
+# t:21.3708,lng:-157.709881 - east
+# at:21.368464380261287,lng:-157.71239 - south
 
 # Wait for the end of the flying action
 # if not flyingAction.wait().success():
@@ -35,3 +48,4 @@ drone(
 # Leaving the with statement scope: implicit drone.disconnect() but that
 # is still a good idea to perform the drone disconnection explicitly
 drone.disconnect()
+casey.disconnect()
