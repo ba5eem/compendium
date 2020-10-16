@@ -42,12 +42,26 @@ april(
 #     | (TakeOff() & FlyingStateChanged(state="hovering"))
 # ).wait().success()
 
+
 april(
-    moveBy(0, -40, 0, 0) # go north
-    >> moveBy(40, 0, 0, 0) # go east
-    >> moveBy(0, 40, 0, 0) # go south
-    >> moveBy(-40, 0, 0, 0) # go west
+    moveBy(0,-40, 0, math.pi)
+    >> PCMD(1, 0, 0, 0, 0, 0)
+    >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait().success()
+
+april(
+    moveBy(40, 0, 0, math.pi)
+    >> PCMD(1, 0, 0, 0, 0, 0)
+    >> FlyingStateChanged(state="hovering", _timeout=5)
+).wait().success()
+
+
+# april(
+#     moveBy(0, -40, 0, 0) # go north
+#     >> moveBy(40, 0, 0, 0) # go east
+#     >> moveBy(0, 40, 0, 0) # go south
+#     >> moveBy(-40, 0, 0, 0) # go west
+# ).wait().success()
 
 # (EAST, 0, 0 , 0)
 # (0, -North, 0, 0)
