@@ -121,10 +121,10 @@ class FlightListener(olympe.EventListener):
         donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],50,0)
         leonardo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,50)
         michaelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-50)
-        casey(moveTo(casey_coords[0], casey_coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        donatello(moveTo(leonardo_coords[0], leonardo_coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        michaelangelo(moveTo(michaelangelo_coords[0], michaelangelo_coords[1], 0.86, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 20, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        michaelangelo(moveTo(michaelangelo_coords[0], michaelangelo_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         print(
             "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
                 **event.args
