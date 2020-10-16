@@ -20,6 +20,8 @@ if __name__ == "__main__":
             >> FlyingStateChanged(state="hovering", _timeout=5)
             >> moveTo(21.37313, -157.7123, 15, MoveTo_Orientation_mode.NONE, 0.0)
             >> moveToChanged(status="DONE")
+            >> moveTo(21.37313, -157.7098, 15, MoveTo_Orientation_mode.NONE, 0.0)
+            >> moveToChanged(status="DONE")
             >> Landing()
         )
 
