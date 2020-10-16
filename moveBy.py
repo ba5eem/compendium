@@ -18,7 +18,7 @@ if __name__ == "__main__":
         flyingAction = drone(
             TakeOff()
             >> FlyingStateChanged(state="hovering", _timeout=5)
-            >> moveTo(21.291352, -157.830716, 15, MoveTo_Orientation_mode.NONE, 0.0)
+            >> moveTo(21.37313, -157.7123, 15, MoveTo_Orientation_mode.NONE, 0.0)
             >> moveToChanged(status="DONE")
             >> Landing()
         )
