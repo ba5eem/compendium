@@ -10,6 +10,7 @@ from olympe.messages.ardrone3.PilotingState import (
     AlertStateChanged,
     FlyingStateChanged,
     NavigateHomeStateChanged,
+    moveToChanged
 )
 
 olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}})
