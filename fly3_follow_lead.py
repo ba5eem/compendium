@@ -117,10 +117,11 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-50,0)
-        donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],50,0)
+        casey_coords = findOffset(event.args["latitude"],event.args["longitude"],0,10)
+        donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],0,30)
         leonardo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,50)
-        michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-50)
+        michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,70)
+        
         casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 20, MoveTo_Orientation_mode.TO_TARGET, 0.0))
@@ -133,9 +134,9 @@ class FlightListener(olympe.EventListener):
 
     
 
-    @olympe.listen_event(moveToChanged())
-    def onmoveToChanged(self, event, scheduler):
-        print("--------->HEADING = {heading}".format(**event.args))    
+    # @olympe.listen_event(moveToChanged())
+    # def onmoveToChanged(self, event, scheduler):
+    #     print("--------->HEADING = {heading}".format(**event.args))    
 
     @olympe.listen_event(AttitudeChanged())
     def onAttitudeChanged(self, event, scheduler):
