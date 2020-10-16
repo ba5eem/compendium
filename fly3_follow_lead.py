@@ -12,9 +12,10 @@ from olympe.messages.ardrone3.PilotingState import (
     AlertStateChanged,
     FlyingStateChanged,
     NavigateHomeStateChanged,
-    moveToChanged,
-    MoveToChanged_Status
+    moveToChanged
 )
+
+from olympe.enums.ardrone3.PilotingState import MoveToChanged_Status
 
 # working subscription - drone leader takes off and moves away
 # casey takes off after drone leader takes off and will follow leaders position
