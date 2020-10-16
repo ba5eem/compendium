@@ -73,8 +73,8 @@ casey = olympe.Drone(casey_ip)
 donatello = olympe.Drone(donatello_ip)
 leonardo = olympe.Drone(leonardo_ip)
 michelangelo = olympe.Drone(michelangelo_ip)
-raphael = olympe.Drone(raphael_ip)
-splinter = olympe.Drone(splinter_ip)
+# raphael = olympe.Drone(raphael_ip)
+# splinter = olympe.Drone(splinter_ip)
 
 def followerTakeOff(drone):
     drone(
