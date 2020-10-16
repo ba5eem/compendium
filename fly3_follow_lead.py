@@ -3,7 +3,7 @@
 import math
 import olympe
 from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy, moveTo
-from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode, MoveToChanged_Status
+from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 from olympe.messages.ardrone3.PilotingState import (
     PositionChanged,
     SpeedChanged,
@@ -12,7 +12,8 @@ from olympe.messages.ardrone3.PilotingState import (
     AlertStateChanged,
     FlyingStateChanged,
     NavigateHomeStateChanged,
-    moveToChanged
+    moveToChanged,
+    MoveToChanged_Status
 )
 
 # working subscription - drone leader takes off and moves away
