@@ -163,7 +163,7 @@ class FlightListener(olympe.EventListener):
         followerTakeOff(casey)
         followerTakeOff(donatello)
         followerTakeOff(leonardo)
-        followerTakeOff(michaelangelo)
+        followerTakeOff(michelangelo)
         print("The drone has taken off!")
         self.has_observed_takeoff = True
 
@@ -187,7 +187,7 @@ if __name__ == "__main__":
     casey.connect()
     donatello.connect()
     leonardo.connect()
-    michaelangelo.connect()
+    michelangelo.connect()
     every_event_listener.unsubscribe()
 
     # You can also subscribe/unsubscribe automatically using a with statement
