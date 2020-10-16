@@ -44,13 +44,13 @@ april(
 
 
 april(
-    moveBy(0,-40, 0, math.pi)
+    moveTo(21.291352585005598, -157.83071637153628, 20, MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> PCMD(1, 0, 0, 0, 0, 0)
     >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait().success()
 
 april(
-    moveBy(40, 0, 0, math.pi)
+    moveTo(21.289915280551007, -157.83071637153628, 20, MoveTo_Orientation_mode.TO_TARGET, 0.0)
     >> PCMD(1, 0, 0, 0, 0, 0)
     >> FlyingStateChanged(state="hovering", _timeout=5)
 ).wait().success()
