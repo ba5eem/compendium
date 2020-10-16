@@ -43,7 +43,7 @@ april(
 
 
 april(
-	>> moveTo(21.291352585005598, -157.83071637153628, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+	moveTo(21.291352585005598, -157.83071637153628, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
 	>> moveTo(21.289915280551007, -157.83071637153628, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
 	>> moveTo(21.290633932778302, -157.82994507905642, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
 	>> moveTo(21.290633932778302, -157.83148766401615, 1, MoveTo_Orientation_mode.TO_TARGET, 0.0)
