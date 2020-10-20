@@ -118,22 +118,28 @@ class FlightListener(olympe.EventListener):
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
 
+        lat = event.args["longitude"]
+        print('\n ------> ')
+        print('\n ------> ')
+        print(lat)
+        print('\n ------> ')
+        print('\n ------> ')
 
-        casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-50,0)
-        donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],50,0)
-        leonardo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,50)
-        michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-50)
-        raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],50,50)
-        splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-50,-50)
+        casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,0)
+        donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],5,0)
+        leonardo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,5)
+        michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-5)
+        raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],5,5)
+        splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,-5)
 
 
         casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 20, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        michelangelo(moveTo(michelangelo_coords[0], michelangelo_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        michelangelo(moveTo(michelangelo_coords[0], michelangelo_coords[1], 25, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
-        raphael(moveTo(raphael_coords[0], raphael_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        splinter(moveTo(splinter_coords[0], splinter_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        raphael(moveTo(raphael_coords[0], raphael_coords[1], 30, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        splinter(moveTo(splinter_coords[0], splinter_coords[1], 35, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
 
 
