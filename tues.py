@@ -119,11 +119,13 @@ class FlightListener(olympe.EventListener):
     def onPositionChanged(self, event, scheduler):
 
         lat = event.args["longitude"]
-        print('\n ------> ')
-        print('\n ------> ')
-        print(lat)
-        print('\n ------> ')
-        print('\n ------> ')
+
+        if lat == '-157.71161874024412'
+            print('\n ------> ')
+            print('\n ------> ')
+            print(lat)
+            print('\n ------> ')
+            print('\n ------> ')
 
         casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,0)
         donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],5,0)
