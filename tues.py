@@ -120,18 +120,19 @@ class FlightListener(olympe.EventListener):
     def onPositionChanged(self, event, scheduler):
         lat = event.args["latitude"]
         lon = event.args["longitude"]
-        poi = [21.3708, -157.7116182859902]
+        c_poi = (lat, lon)
+        poi = (21.3708, -157.7116182859902)
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
-        print(haversine(poi[0], poi[1], lat, lon))
+        print(haversine(poi, c_poi, unit='m'))
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
 
 
         casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,0)
-        
+
         # donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],5,0)
         # leonardo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,5)
         # michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-5)
