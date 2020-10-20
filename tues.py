@@ -2,6 +2,7 @@
 
 import math
 import olympe
+import haversine
 from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy, moveTo
 from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 from olympe.messages.ardrone3.PilotingState import (
@@ -117,16 +118,17 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-
-        lat = event.args["longitude"]
-        poi = "-157.71161874024412"
-
-        if lat == poi:
-            print('\n ------> ')
-            print('\n ------> ')
-            print(lat)
-            print('\n ------> ')
-            print('\n ------> ')
+        lat = event.args["latitude"]
+        lon = event.args["longitude"]
+        poi = [21.3708, -157.7116182859902]
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print(haversine(poi[0], poi[1], lat, lon))
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        
 
         casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,0)
         donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],5,0)
