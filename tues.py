@@ -73,8 +73,8 @@ casey = olympe.Drone(casey_ip)
 donatello = olympe.Drone(donatello_ip)
 leonardo = olympe.Drone(leonardo_ip)
 michelangelo = olympe.Drone(michelangelo_ip)
-# raphael = olympe.Drone(raphael_ip)
-# splinter = olympe.Drone(splinter_ip)
+raphael = olympe.Drone(raphael_ip)
+splinter = olympe.Drone(splinter_ip)
 
 def followerTakeOff(drone):
     drone(
@@ -117,14 +117,26 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
+
+
         casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-50,0)
         donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],50,0)
         leonardo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,50)
         michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-50)
+        rapheal_coords = findOffset(event.args["latitude"],event.args["longitude"],50,50)
+        splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-50,-50)
+
+
         casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 20, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         michelangelo(moveTo(michelangelo_coords[0], michelangelo_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+
+        rapheal(moveTo(rapheal_coords[0], rapheal_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        splinter(moveTo(splinter_coords[0], splinter_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+
+        
+
         print(
             "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
                 **event.args
@@ -164,6 +176,8 @@ class FlightListener(olympe.EventListener):
         followerTakeOff(donatello)
         followerTakeOff(leonardo)
         followerTakeOff(michelangelo)
+        followerTakeOff(rapheal)
+        followerTakeOff(splinter)
         # casey(TakeOff())
         # donatello(TakeOff())
         # leonardo(TakeOff())
@@ -192,6 +206,8 @@ if __name__ == "__main__":
     donatello.connect()
     leonardo.connect()
     michelangelo.connect()
+    rapheal.connect()
+    splinter.connect()
     every_event_listener.unsubscribe()
 
     # You can also subscribe/unsubscribe automatically using a with statement
