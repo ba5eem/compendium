@@ -160,14 +160,14 @@ class FlightListener(olympe.EventListener):
     def onTakeOff(self, event, scheduler):
         # This method will be called once for each completed sequence of event
         # FlyingStateChanged: motor_ramping -> takingoff -> hovering
-        # followerTakeOff(casey)
-        # followerTakeOff(donatello)
-        # followerTakeOff(leonardo)
-        # followerTakeOff(michelangelo)
-        casey(TakeOff())
-        donatello(TakeOff())
-        leonardo(TakeOff())
-        michelangelo(TakeOff())
+        followerTakeOff(casey)
+        followerTakeOff(donatello)
+        followerTakeOff(leonardo)
+        followerTakeOff(michelangelo)
+        # casey(TakeOff())
+        # donatello(TakeOff())
+        # leonardo(TakeOff())
+        # michelangelo(TakeOff())
         print("The drone has taken off!")
         self.has_observed_takeoff = True
 
