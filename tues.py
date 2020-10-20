@@ -131,11 +131,16 @@ class FlightListener(olympe.EventListener):
         print('\n ------->')
         print('\n ------->')
 
+        two_lat = event.args["latitude"]
+        two_lon = event.args["longitude"]
+
         if meters < 2:
-            casey(moveTo(21.370950, -157.709998, 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        else:
-            casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,0)
-            casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+            two_lat = 21.370950
+            two_lon = -157.709998
+
+        
+        casey_coords = findOffset(two_lat,two_lon,-5,0)
+        casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
 
         
