@@ -125,13 +125,20 @@ class FlightListener(olympe.EventListener):
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
-        print(haversine(poi, c_poi, unit='m'))
+        meters = haversine(poi, c_poi, unit='m')
+        
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
 
+        if meters < 2:
+            casey(moveTo(21.370950, -157.709998, 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        else:
+            casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,0)
+            casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
-        casey_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,0)
+
+        
 
         # donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],5,0)
         # leonardo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,5)
@@ -140,7 +147,7 @@ class FlightListener(olympe.EventListener):
         # splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,-5)
 
 
-        casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        
 
         # donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         # leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 20, MoveTo_Orientation_mode.TO_TARGET, 0.0))
