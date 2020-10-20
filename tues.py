@@ -120,7 +120,7 @@ class FlightListener(olympe.EventListener):
 
         lat = event.args["longitude"]
 
-        if lat == '-157.71161874024412'
+        if lat == "-157.71161874024412"
             print('\n ------> ')
             print('\n ------> ')
             print(lat)
