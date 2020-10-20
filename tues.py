@@ -135,7 +135,7 @@ class FlightListener(olympe.EventListener):
         two_lat = event.args["latitude"]
         two_lon = event.args["longitude"]
 
-        if meters < 2:
+        if meters < 8:
             casey(moveToChanged(status="CANCELED")
                 >> moveTo(21.370950, -157.709998, 10, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
@@ -156,9 +156,9 @@ class FlightListener(olympe.EventListener):
         donatello_coords = findOffset(two_lat,two_lon,5,0)
         leonardo_coords = findOffset(two_lat,two_lon,0,5)
 
-        michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-5)
-        raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],5,5)
-        splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-5,-5)
+        michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-10)
+        raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],10,10)
+        splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-10,-10)
 
 
         
