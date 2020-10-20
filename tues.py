@@ -119,8 +119,9 @@ class FlightListener(olympe.EventListener):
     def onPositionChanged(self, event, scheduler):
 
         lat = event.args["longitude"]
+        poi = "-157.71161874024412"
 
-        if lat == "-157.71161874024412"
+        if lat == poi
             print('\n ------> ')
             print('\n ------> ')
             print(lat)
