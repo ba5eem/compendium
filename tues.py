@@ -121,12 +121,13 @@ class FlightListener(olympe.EventListener):
         lat = event.args["latitude"]
         lon = event.args["longitude"]
         c_poi = (lat, lon)
-        poi = (21.3708, -157.7116182859902)
+        poi = (21.371518, -157.71161)
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
         meters = haversine(poi, c_poi, unit='m')
-        
+        print(meters)
+        print(meters > 2)
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
