@@ -34,27 +34,27 @@ def findOffset(lat,lng,n,e):
 
 def makeTriangleFormation(lat,lng):
     april = findOffset(lat,lng,20,0)
-    rapheal = findOffset(lat,lng,-40,0)
+    raphael = findOffset(lat,lng,-40,0)
     michaelangelo = findOffset(lat,lng,-20,20)
     donatello = findOffset(lat,lng,-20,-20)
     splinter = findOffset(lat,lng,-40,40)
     leonardo = findOffset(lat,lng,-40,-40)
     casey = findOffset(lat,lng,-70,0)
-    return [april, rapheal, michaelangelo, donatello, splinter, leonardo, casey]
+    return [april, raphael, michaelangelo, donatello, splinter, leonardo, casey]
 
 def makeSquareFormation(lat,lng):
     april = findOffset(lat,lng,40,0) # leader middle
-    rapheal = findOffset(lat,lng,-40,0) # middle bottom
+    raphael = findOffset(lat,lng,-40,0) # middle bottom
     michaelangelo = findOffset(lat,lng,0,40) # top right
     donatello = findOffset(lat,lng,0,-40) # top left
     splinter = findOffset(lat,lng,0,0) # middle top
     leonardo = findOffset(lat,lng,-40,-40) # bottom left
     casey = findOffset(lat,lng,-40,40) # bottom right
-    return [april, rapheal, michaelangelo, donatello, splinter, leonardo, casey]
+    return [april, raphael, michaelangelo, donatello, splinter, leonardo, casey]
 
 def makeLineFormation(lat,lng):
     # april = findOffset(lat,lng,100,0) 
-    # rapheal = findOffset(lat,lng,80,0) 
+    # raphael = findOffset(lat,lng,80,0) 
     # michaelangelo = findOffset(lat,lng,60, 0) 
     # donatello = findOffset(lat,lng,40,0) 
     # splinter = findOffset(lat,lng,20,0) 
@@ -123,7 +123,7 @@ class FlightListener(olympe.EventListener):
         donatello_coords = findOffset(event.args["latitude"],event.args["longitude"],50,0)
         leonardo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,50)
         michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-50)
-        rapheal_coords = findOffset(event.args["latitude"],event.args["longitude"],50,50)
+        raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],50,50)
         splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-50,-50)
 
 
@@ -132,10 +132,10 @@ class FlightListener(olympe.EventListener):
         leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 20, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         michelangelo(moveTo(michelangelo_coords[0], michelangelo_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
-        rapheal(moveTo(rapheal_coords[0], rapheal_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        raphael(moveTo(raphael_coords[0], raphael_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         splinter(moveTo(splinter_coords[0], splinter_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
-        
+
 
         print(
             "latitude = {latitude} longitude = {longitude} altitude = {altitude}".format(
@@ -176,7 +176,7 @@ class FlightListener(olympe.EventListener):
         followerTakeOff(donatello)
         followerTakeOff(leonardo)
         followerTakeOff(michelangelo)
-        followerTakeOff(rapheal)
+        followerTakeOff(raphael)
         followerTakeOff(splinter)
         # casey(TakeOff())
         # donatello(TakeOff())
@@ -206,7 +206,7 @@ if __name__ == "__main__":
     donatello.connect()
     leonardo.connect()
     michelangelo.connect()
-    rapheal.connect()
+    raphael.connect()
     splinter.connect()
     every_event_listener.unsubscribe()
 
