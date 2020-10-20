@@ -127,7 +127,7 @@ class FlightListener(olympe.EventListener):
         print('\n ------->')
         meters = haversine(poi, c_poi, unit='m')
         print(meters)
-        print(meters > 2)
+        print(meters < 2)
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
@@ -136,6 +136,10 @@ class FlightListener(olympe.EventListener):
         two_lon = event.args["longitude"]
 
         if meters < 2:
+            casey(moveToChanged(status="CANCELED")
+                >> moveTo(21.370950, -157.709998, 10, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveToChanged(status="DONE")
+            )
             two_lat = 21.370950
             two_lon = -157.709998
 
