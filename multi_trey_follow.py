@@ -91,12 +91,18 @@ def followerTakeOff(drone):
     ).wait().success()
 
 def findPoi(i):
-    donatello(moveTo(d2[i]["lat"], d2[i]["lng"], d2[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-    leonardo(moveTo(d3[i]["lat"], d3[i]["lng"], d3[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-    michelangelo(moveTo(d4[i]["lat"], d4[i]["lng"], d4[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-    raphael(moveTo(d5[i]["lat"], d5[i]["lng"], d5[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-    splinter(moveTo(d6[i]["lat"], d6[i]["lng"], d6[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-    casey(moveTo(d7[i]["lat"], d7[i]["lng"], d7[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    donatello(
+        moveTo(d2[i]["lat"], d2[i]["lng"], d2[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    leonardo(
+        moveTo(d3[i]["lat"], d3[i]["lng"], d3[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    michelangelo(
+        moveTo(d4[i]["lat"], d4[i]["lng"], d4[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    raphael(
+        moveTo(d5[i]["lat"], d5[i]["lng"], d5[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    splinter(
+        moveTo(d6[i]["lat"], d6[i]["lng"], d6[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+    casey(
+        moveTo(d7[i]["lat"], d7[i]["lng"], d7[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
 
 def print_event(event):
