@@ -171,18 +171,33 @@ class FlightListener(olympe.EventListener):
         # raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],10,10)
         # splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-10,-10)
 
-        donatello(
-            moveTo(d2[i]["lat"], d2[i]["lng"], d2[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        leonardo(
-            moveTo(d3[i]["lat"], d3[i]["lng"], d3[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        michelangelo(
-            moveTo(d4[i]["lat"], d4[i]["lng"], d4[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        raphael(
-            moveTo(d5[i]["lat"], d5[i]["lng"], d5[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        splinter(
-            moveTo(d6[i]["lat"], d6[i]["lng"], d6[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        # donatello(
+        #     moveTo(d2[i]["lat"], d2[i]["lng"], d2[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        # leonardo(
+        #     moveTo(d3[i]["lat"], d3[i]["lng"], d3[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        # michelangelo(
+        #     moveTo(d4[i]["lat"], d4[i]["lng"], d4[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        # raphael(
+        #     moveTo(d5[i]["lat"], d5[i]["lng"], d5[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        # splinter(
+        #     moveTo(d6[i]["lat"], d6[i]["lng"], d6[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print(i)
+        print(d7[i])
+        print(d7[i]["lat"])
         casey(
             moveTo(d7[i]["lat"], d7[i]["lng"], d7[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
         
         # casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         # donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
@@ -230,11 +245,11 @@ class FlightListener(olympe.EventListener):
         # FlyingStateChanged: motor_ramping -> takingoff -> hovering
         followerTakeOff(casey)
 
-        followerTakeOff(donatello)
-        followerTakeOff(leonardo)
-        followerTakeOff(michelangelo)
-        followerTakeOff(raphael)
-        followerTakeOff(splinter)
+        # followerTakeOff(donatello)
+        # followerTakeOff(leonardo)
+        # followerTakeOff(michelangelo)
+        # followerTakeOff(raphael)
+        # followerTakeOff(splinter)
 
 
 
@@ -261,11 +276,11 @@ if __name__ == "__main__":
     drone.connect()
     casey.connect()
 
-    donatello.connect()
-    leonardo.connect()
-    michelangelo.connect()
-    raphael.connect()
-    splinter.connect()
+    # donatello.connect()
+    # leonardo.connect()
+    # michelangelo.connect()
+    # raphael.connect()
+    # splinter.connect()
 
     every_event_listener.unsubscribe()
 
