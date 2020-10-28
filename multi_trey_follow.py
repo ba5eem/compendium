@@ -82,11 +82,11 @@ michelangelo_ip = "10.202.4.1"
 raphael_ip = "10.202.5.1"
 splinter_ip = "10.202.6.1"
 casey = olympe.Drone(casey_ip)
-# donatello = olympe.Drone(donatello_ip)
-# leonardo = olympe.Drone(leonardo_ip)
-# michelangelo = olympe.Drone(michelangelo_ip)
-# raphael = olympe.Drone(raphael_ip)
-# splinter = olympe.Drone(splinter_ip)
+donatello = olympe.Drone(donatello_ip)
+leonardo = olympe.Drone(leonardo_ip)
+michelangelo = olympe.Drone(michelangelo_ip)
+raphael = olympe.Drone(raphael_ip)
+splinter = olympe.Drone(splinter_ip)
 
 def followerTakeOff(drone):
     drone(
@@ -234,11 +234,11 @@ class FlightListener(olympe.EventListener):
         # FlyingStateChanged: motor_ramping -> takingoff -> hovering
         followerTakeOff(casey)
 
-        # followerTakeOff(donatello)
-        # followerTakeOff(leonardo)
-        # followerTakeOff(michelangelo)
-        # followerTakeOff(raphael)
-        # followerTakeOff(splinter)
+        followerTakeOff(donatello)
+        followerTakeOff(leonardo)
+        followerTakeOff(michelangelo)
+        followerTakeOff(raphael)
+        followerTakeOff(splinter)
 
 
 
@@ -265,11 +265,11 @@ if __name__ == "__main__":
     drone.connect()
     casey.connect()
 
-    # donatello.connect()
-    # leonardo.connect()
-    # michelangelo.connect()
-    # raphael.connect()
-    # splinter.connect()
+    donatello.connect()
+    leonardo.connect()
+    michelangelo.connect()
+    raphael.connect()
+    splinter.connect()
 
     every_event_listener.unsubscribe()
 
