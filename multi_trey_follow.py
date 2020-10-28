@@ -27,7 +27,7 @@ from d7 import d7
 # this does a square flight pattern
 
 olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}})
-
+poiIndex = 0
 
 def findOffset(lat,lng,n,e):
     earthRadius=6378137
@@ -70,9 +70,7 @@ def makeLineFormation(lat,lng):
     casey = findOffset(lat,lng,-20,0) 
     return casey
 
-def findPoi(index):
-    i = index
-    return i
+
 
 DRONE_IP = "10.202.0.1"
 casey_ip = "10.202.1.1"
@@ -122,7 +120,7 @@ class FlightListener(olympe.EventListener):
 
     # This set a default queue size for every listener method
     default_queue_size = 100
-    i = 0
+    
 
     def __init__(self, *args, **kwds):
         super().__init__(*args, **kwds)
@@ -130,7 +128,7 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        i += 1
+        poiIndex += 1
         # lat = event.args["latitude"]
         # lon = event.args["longitude"]
         # c_poi = (lat, lon)
@@ -139,7 +137,7 @@ class FlightListener(olympe.EventListener):
         print('\n ------->')
         print('\n ------->')
 
-        print(i)
+        print(poiIndex)
 
         print('\n ------->')
         print('\n ------->')
@@ -174,19 +172,43 @@ class FlightListener(olympe.EventListener):
         # splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-10,-10)
         
         donatello(
-            moveTo(float(d2[i]["lat"]), float(d2[i]["lng"]), float(d2[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+            moveTo(
+                float(d2[poiIndex]["lat"]),
+                float(d2[poiIndex]["lng"]),
+                float(d2[poiIndex]["alt"]),
+                MoveTo_Orientation_mode.TO_TARGET, 0.0))
         leonardo(
-            moveTo(float(d3[i]["lat"]), float(d3[i]["lng"]), float(d3[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+            moveTo(
+                float(d3[poiIndex]["lat"]),
+                float(d3[poiIndex]["lng"]),
+                float(d3[poiIndex]["alt"]),
+                MoveTo_Orientation_mode.TO_TARGET, 0.0))
         michelangelo(
-            moveTo(float(d4[i]["lat"]), float(d4[i]["lng"]), float(d4[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+            moveTo(
+                float(d4[poiIndex]["lat"]),
+                float(d4[poiIndex]["lng"]),
+                float(d4[poiIndex]["alt"]),
+                MoveTo_Orientation_mode.TO_TARGET, 0.0))
         raphael(
-            moveTo(float(d5[i]["lat"]), float(d5[i]["lng"]), float(d5[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+            moveTo(
+                float(d5[poiIndex]["lat"]),
+                float(d5[poiIndex]["lng"]),
+                float(d5[poiIndex]["alt"]),
+                MoveTo_Orientation_mode.TO_TARGET, 0.0))
         splinter(
-            moveTo(float(d6[i]["lat"]), float(d6[i]["lng"]), float(d6[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+            moveTo(
+                float(d6[poiIndex]["lat"]),
+                float(d6[poiIndex]["lng"]),
+                float(d6[poiIndex]["alt"]),
+                MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
 
         casey(
-            moveTo(float(d7[i]["lat"]), float(d7[i]["lng"]), float(d7[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+            moveTo(
+                float(d7[poiIndex]["lat"]),
+                float(d7[poiIndex]["lng"]),
+                float(d7[poiIndex]["alt"]),
+                MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
         
 
