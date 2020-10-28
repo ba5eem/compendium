@@ -27,7 +27,7 @@ from d7 import d7
 # this does a square flight pattern
 
 olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}})
-i = 0
+
 
 def findOffset(lat,lng,n,e):
     earthRadius=6378137
@@ -122,6 +122,7 @@ class FlightListener(olympe.EventListener):
 
     # This set a default queue size for every listener method
     default_queue_size = 100
+    i = 0
 
     def __init__(self, *args, **kwds):
         super().__init__(*args, **kwds)
@@ -133,15 +134,15 @@ class FlightListener(olympe.EventListener):
         # lon = event.args["longitude"]
         # c_poi = (lat, lon)
         # poi = (21.371518, -157.71161)
-        # print('\n ------->')
-        # print('\n ------->')
-        # print('\n ------->')
-        # meters = haversine(poi, c_poi, unit='m')
-        # print(meters)
-        # print(meters < 2)
-        # print('\n ------->')
-        # print('\n ------->')
-        # print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+
+        print(i)
+
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
 
         # two_lat = event.args["latitude"]
         # two_lon = event.args["longitude"]
@@ -170,7 +171,7 @@ class FlightListener(olympe.EventListener):
         # michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-10)
         # raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],10,10)
         # splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-10,-10)
-        
+        i += 1
         donatello(
             moveTo(float(d2[i]["lat"]), float(d2[i]["lng"]), float(d2[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
         leonardo(
@@ -186,7 +187,7 @@ class FlightListener(olympe.EventListener):
         casey(
             moveTo(float(d7[i]["lat"]), float(d7[i]["lng"]), float(d7[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
-        i += 1
+        
 
 
         
