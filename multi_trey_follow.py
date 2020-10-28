@@ -82,11 +82,11 @@ michelangelo_ip = "10.202.4.1"
 raphael_ip = "10.202.5.1"
 splinter_ip = "10.202.6.1"
 casey = olympe.Drone(casey_ip)
-donatello = olympe.Drone(donatello_ip)
-leonardo = olympe.Drone(leonardo_ip)
-michelangelo = olympe.Drone(michelangelo_ip)
-raphael = olympe.Drone(raphael_ip)
-splinter = olympe.Drone(splinter_ip)
+# donatello = olympe.Drone(donatello_ip)
+# leonardo = olympe.Drone(leonardo_ip)
+# michelangelo = olympe.Drone(michelangelo_ip)
+# raphael = olympe.Drone(raphael_ip)
+# splinter = olympe.Drone(splinter_ip)
 
 def followerTakeOff(drone):
     drone(
@@ -190,8 +190,10 @@ class FlightListener(olympe.EventListener):
         print(i)
         print(d7[i])
         print(d7[i]["lat"])
+
         casey(
             moveTo(d7[i]["lat"], d7[i]["lng"], d7[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
