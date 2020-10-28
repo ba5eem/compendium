@@ -358,32 +358,20 @@ if __name__ == "__main__":
                 | (TakeOff() & FlyingStateChanged(state="hovering"))
             ).wait().success()
 
-        for poi in d1_route:
+        # for poi in d1_route:
+        #     assert drone(
+        #         FlyingStateChanged(state="hovering", _timeout=5)
+        #         >> moveTo(poi["lat"], poi["lng"], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+        #         >> moveToChanged(status="DONE")
+        #     )
+
             assert drone(
                 FlyingStateChanged(state="hovering", _timeout=5)
-                >> moveTo(poi["lat"], poi["lng"], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-            )
+                >> for poi in d1_route:
+                    >> moveTo(poi["lat"], poi["lng"], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                    >> moveToChanged(status="DONE")
 
-            # assert drone(
-            #     FlyingStateChanged(state="hovering", _timeout=5)
-            #     >> moveTo(21.371518652227294, -157.71239, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-            #     >> moveToChanged(status="DONE")
-            #     >> moveTo(21.371518652227294, -157.7116182859902, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-            #     >> moveToChanged(status="DONE")
-            #     >> moveTo(21.3708, -157.7116182859902, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-            #     >> moveToChanged(status="DONE")
-            #     >> moveTo(21.370081347772704, -157.7116182859902, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-            #     >> moveToChanged(status="DONE")
-            #     >> moveTo(21.370081347772704, -157.71239, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-            #     >> moveToChanged(status="DONE")
-            #     >> moveTo(21.370081347772704, -157.7131617140098, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-            #     >> moveToChanged(status="DONE")
-            #     >> moveTo(21.3708, -157.7131617140098, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-            #     >> moveToChanged(status="DONE")
-            #     >> moveTo(21.371518652227294, -157.7131617140098, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-            #     >> moveToChanged(status="DONE")
-            # ).wait().success()
+            ).wait().success()
             drone(Landing()).wait()
             assert drone(FlyingStateChanged(state="landed")).wait().success()
 
