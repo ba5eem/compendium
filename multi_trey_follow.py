@@ -128,6 +128,7 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
+        global poiIndex
         poiIndex += 1
         # lat = event.args["latitude"]
         # lon = event.args["longitude"]
