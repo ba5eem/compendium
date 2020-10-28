@@ -151,6 +151,21 @@ d1_route = [
 {"lat":"21.43367421543038","lng":"-157.788090353939","alt":"132.0000493377447"}
 ]
 
+def findPoi():
+    print('\n ------->')
+    print('\n ------->')
+    print('\n ------->')
+    print('\n ------->')
+    print('\n ------->')
+    print('\n ------->')
+    print(d1_route[1])
+    print('\n ------->')
+    print('\n ------->')
+    print('\n ------->')
+    print('\n ------->')
+    print('\n ------->')
+    print('\n ------->')
+
 
 def findOffset(lat,lng,n,e):
     earthRadius=6378137
@@ -361,6 +376,7 @@ if __name__ == "__main__":
             assert drone(
                 FlyingStateChanged(state="hovering", _timeout=5)
                 >> moveTo(21.43378258952731, -157.7882350477468, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi()
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378258971239, -157.7882350475352, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
