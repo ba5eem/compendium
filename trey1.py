@@ -358,11 +358,12 @@ if __name__ == "__main__":
                 | (TakeOff() & FlyingStateChanged(state="hovering"))
             ).wait().success()
 
-        # for poi in route:
-        #     assert drone(
-        #         FlyingStateChanged(state="hovering", _timeout=5)
-        #         >> moveTo(poi["lat"], poi["lng"], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        #         >> moveToChanged(status="DONE")
+        for poi in route:
+            assert drone(
+                FlyingStateChanged(state="hovering", _timeout=5)
+                >> moveTo(poi["lat"], poi["lng"], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveToChanged(status="DONE")
+            )
 
             assert drone(
                 FlyingStateChanged(state="hovering", _timeout=5)
