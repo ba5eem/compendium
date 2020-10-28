@@ -192,8 +192,8 @@ class FlightListener(olympe.EventListener):
         print(d7[i]["lat"])
 
         casey(
-            moveTo(d7[i]["lat"], d7[i]["lng"], d7[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        
+            moveTo(int(d7[i]["lat"]), int(d7[i]["lng"]), int(d7[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
