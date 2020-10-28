@@ -367,7 +367,7 @@ if __name__ == "__main__":
 
             assert drone(
                 FlyingStateChanged(state="hovering", _timeout=5)
-                >> for poi in d1_route:
+                for poi in d1_route:
                     >> moveTo(poi["lat"], poi["lng"], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                     >> moveToChanged(status="DONE")
 
