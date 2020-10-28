@@ -27,7 +27,7 @@ from d7 import d7
 # this does a square flight pattern
 
 olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}})
-#poiIndex = 0
+poiIndex = 0
 
 def findOffset(lat,lng,n,e):
     earthRadius=6378137
@@ -120,7 +120,6 @@ class FlightListener(olympe.EventListener):
 
     # This set a default queue size for every listener method
     default_queue_size = 100
-    poiIndex = 0
 
     def __init__(self, *args, **kwds):
         super().__init__(*args, **kwds)
