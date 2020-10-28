@@ -171,35 +171,22 @@ class FlightListener(olympe.EventListener):
         # raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],10,10)
         # splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-10,-10)
 
-        # donatello(
-        #     moveTo(d2[i]["lat"], d2[i]["lng"], d2[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # leonardo(
-        #     moveTo(d3[i]["lat"], d3[i]["lng"], d3[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # michelangelo(
-        #     moveTo(d4[i]["lat"], d4[i]["lng"], d4[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # raphael(
-        #     moveTo(d5[i]["lat"], d5[i]["lng"], d5[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # splinter(
-        #     moveTo(d6[i]["lat"], d6[i]["lng"], d6[i]["alt"], MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
-        print(i)
-        print(d7[i])
-        print(d7[i]["lat"])
+        donatello(
+            moveTo(float(d2[i]["lat"]), float(d2[i]["lng"]), float(d2[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        leonardo(
+            moveTo(float(d3[i]["lat"]), float(d3[i]["lng"]), float(d3[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        michelangelo(
+            moveTo(float(d4[i]["lat"]), float(d4[i]["lng"]), float(d4[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        raphael(
+            moveTo(float(d5[i]["lat"]), float(d5[i]["lng"]), float(d5[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        splinter(
+            moveTo(float(d6[i]["lat"]), float(d6[i]["lng"]), float(d6[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
+
 
         casey(
             moveTo(float(d7[i]["lat"]), float(d7[i]["lng"]), float(d7[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
+
         
         # casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
         # donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
