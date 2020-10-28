@@ -130,6 +130,7 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
+        i += 1
         # lat = event.args["latitude"]
         # lon = event.args["longitude"]
         # c_poi = (lat, lon)
@@ -171,7 +172,7 @@ class FlightListener(olympe.EventListener):
         # michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-10)
         # raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],10,10)
         # splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-10,-10)
-        i += 1
+        
         donatello(
             moveTo(float(d2[i]["lat"]), float(d2[i]["lng"]), float(d2[i]["alt"]), MoveTo_Orientation_mode.TO_TARGET, 0.0))
         leonardo(
