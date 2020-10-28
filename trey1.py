@@ -372,7 +372,6 @@ if __name__ == "__main__":
             for poi in d1_route:
                 assert drone(
                     moveTo(poi["lat"], poi["lng"], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                    >> moveToChanged(status="DONE")
                 ).wait().success()
 
             
