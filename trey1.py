@@ -22,134 +22,7 @@ from olympe.messages.ardrone3.PilotingState import (
 
 olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}})
 
-d1_route = [
-{"lat":"21.43378258952731","lng":"-157.7882350477468","alt":"2.867914736270905e-05"},
-{"lat":"21.43378258971239","lng":"-157.7882350475352","alt":"10.00002867821604"},
-{"lat":"21.43378258989746","lng":"-157.7882350473236","alt":"20.00002867821604"},
-{"lat":"21.43378259008253","lng":"-157.7882350471119","alt":"30.00002867821604"},
-{"lat":"21.4337825902676","lng":"-157.7882350469003","alt":"40.00002867821604"},
-{"lat":"21.43378259045268","lng":"-157.7882350466886","alt":"50.00002867821604"},
-{"lat":"21.43378259063775","lng":"-157.788235046477","alt":"60.00002867635339"},
-{"lat":"21.43378259082282","lng":"-157.7882350462654","alt":"70.00002867821604"},
-{"lat":"21.43378259100789","lng":"-157.7882350460537","alt":"80.00002867821604"},
-{"lat":"21.43378259119296","lng":"-157.7882350458421","alt":"90.00002867914736"},
-{"lat":"21.43378259137803","lng":"-157.7882350456304","alt":"100.000028678216"},
-{"lat":"21.4337825915631","lng":"-157.7882350454188","alt":"110.0000286791474"},
-{"lat":"21.43378259174817","lng":"-157.7882350452072","alt":"120.000028678216"},
-{"lat":"21.43378259193324","lng":"-157.7882350449956","alt":"130.000028678216"},
-{"lat":"21.43378259211831","lng":"-157.7882350447839","alt":"140.0000286772847"},
-{"lat":"21.43378259230337","lng":"-157.7882350445723","alt":"150.000028678216"},
-{"lat":"21.43378259230337","lng":"-157.7882350445723","alt":"150.000028678216"},
-{"lat":"21.43378259230337","lng":"-157.7882350445723","alt":"150.000028678216"},
-{"lat":"21.43378259230337","lng":"-157.7882350445723","alt":"150.000028678216"},
-{"lat":"21.43378259230337","lng":"-157.7882350445723","alt":"150.000028678216"},
-{"lat":"21.43378259230337","lng":"-157.7882350445723","alt":"150.000028678216"},
-{"lat":"21.43378259230337","lng":"-157.7882350445723","alt":"150.000028678216"},
-{"lat":"21.43382774908902","lng":"-157.7882350446139","alt":"150.0000204024836"},
-{"lat":"21.43387290587442","lng":"-157.7882350446554","alt":"150.0000160671771"},
-{"lat":"21.43391806265958","lng":"-157.7882350446969","alt":"150.0000156741589"},
-{"lat":"21.4339632194445","lng":"-157.7882350447385","alt":"150.0000192206353"},
-{"lat":"21.43400837622917","lng":"-157.78823504478","alt":"150.0000267084688"},
-{"lat":"21.4340535330136","lng":"-157.7882350448215","alt":"150.0000381348655"},
-{"lat":"21.43409868979779","lng":"-157.7882350448631","alt":"150.0000535035506"},
-{"lat":"21.43414384658173","lng":"-157.7882350449046","alt":"150.0000728117302"},
-{"lat":"21.43418900336543","lng":"-157.7882350449461","alt":"150.0000960631296"},
-{"lat":"21.43423416014888","lng":"-157.7882350449877","alt":"150.0001232540235"},
-{"lat":"21.4342793169321","lng":"-157.7882350450292","alt":"150.0001543853432"},
-{"lat":"21.43432447371506","lng":"-157.7882350450708","alt":"150.00018945802"},
-{"lat":"21.43436963049779","lng":"-157.7882350451123","alt":"150.0002284701914"},
-{"lat":"21.43441478728027","lng":"-157.7882350451539","alt":"150.0002714246511"},
-{"lat":"21.43441478728027","lng":"-157.7882350451539","alt":"150.0002714246511"},
-{"lat":"21.43441478723443","lng":"-157.788283275566","alt":"150.0002843532711"},
-{"lat":"21.4344147871747","lng":"-157.7883315059781","alt":"150.0003011999652"},
-{"lat":"21.43441478710107","lng":"-157.7883797363901","alt":"150.000321963802"},
-{"lat":"21.43441478701356","lng":"-157.7884279668023","alt":"150.0003466457129"},
-{"lat":"21.43441478691216","lng":"-157.7884761972144","alt":"150.0003752447665"},
-{"lat":"21.43441478679686","lng":"-157.7885244276264","alt":"150.0004077628255"},
-{"lat":"21.43441478666768","lng":"-157.7885726580386","alt":"150.0004441980273"},
-{"lat":"21.4344147865246","lng":"-157.7886208884507","alt":"150.0004845522344"},
-{"lat":"21.43441478636763","lng":"-157.7886691188627","alt":"150.000528822653"},
-{"lat":"21.43441478636763","lng":"-157.7886691188627","alt":"150.000528822653"},
-{"lat":"21.43436962969169","lng":"-157.7886594726959","alt":"149.0004767002538"},
-{"lat":"21.43432447300071","lng":"-157.788649826532","alt":"148.0004286775365"},
-{"lat":"21.43427931629468","lng":"-157.7886401803709","alt":"147.0003847526386"},
-{"lat":"21.43423415957363","lng":"-157.7886305342128","alt":"146.0003449227661"},
-{"lat":"21.43418900283754","lng":"-157.7886208880576","alt":"145.0003091925755"},
-{"lat":"21.43414384608641","lng":"-157.7886112419053","alt":"144.0002775574103"},
-{"lat":"21.43409868932025","lng":"-157.788601595756","alt":"143.0002500209957"},
-{"lat":"21.43405353253906","lng":"-157.7885919496095","alt":"142.0002265814692"},
-{"lat":"21.43400837574283","lng":"-157.7885823034659","alt":"141.0002072397619"},
-{"lat":"21.43400837574283","lng":"-157.7885823034659","alt":"141.0002072397619"},
-{"lat":"21.43396321893156","lng":"-157.7885726573253","alt":"140.000191995874"},
-{"lat":"21.43391806210527","lng":"-157.7885630111876","alt":"139.0001808479428"},
-{"lat":"21.43387290526393","lng":"-157.7885533650528","alt":"138.0001737987623"},
-{"lat":"21.43382774840756","lng":"-157.7885437189208","alt":"137.0001708464697"},
-{"lat":"21.43378259153616","lng":"-157.7885340727919","alt":"136.0001719910651"},
-{"lat":"21.43373743464972","lng":"-157.7885244266658","alt":"135.0001772334799"},
-{"lat":"21.43369227774824","lng":"-157.7885147805426","alt":"134.000186573714"},
-{"lat":"21.43364712083173","lng":"-157.7885051344223","alt":"133.0002000108361"},
-{"lat":"21.43360196390019","lng":"-157.788495488305","alt":"132.0002175448462"},
-{"lat":"21.43360196390019","lng":"-157.788495488305","alt":"132.0002175448462"},
-{"lat":"21.43360196377935","lng":"-157.7885437185861","alt":"132.0002516293898"},
-{"lat":"21.43360196364461","lng":"-157.7885919488672","alt":"132.0002896320075"},
-{"lat":"21.43360196349598","lng":"-157.7886401791483","alt":"132.0003315545619"},
-{"lat":"21.43360196333346","lng":"-157.7886884094293","alt":"132.000377391465"},
-{"lat":"21.43360196315705","lng":"-157.7887366397105","alt":"132.0004271483049"},
-{"lat":"21.43360196296675","lng":"-157.7887848699916","alt":"132.0004808222875"},
-{"lat":"21.43360196276256","lng":"-157.7888331002726","alt":"132.0005384143442"},
-{"lat":"21.43360196254448","lng":"-157.7888813305537","alt":"132.0005999235436"},
-{"lat":"21.43360196231251","lng":"-157.7889295608348","alt":"132.0006653517485"},
-{"lat":"21.43360196231251","lng":"-157.7889295608348","alt":"132.0006653517485"},
-{"lat":"21.43364711922725","lng":"-157.78892956109","alt":"132.0006413133815"},
-{"lat":"21.43369227614174","lng":"-157.7889295613452","alt":"132.0006212154403"},
-{"lat":"21.43373743305599","lng":"-157.7889295616004","alt":"132.0006050588563"},
-{"lat":"21.43378258997","lng":"-157.7889295618555","alt":"132.0005928417668"},
-{"lat":"21.43382774688376","lng":"-157.7889295621107","alt":"132.0005845660344"},
-{"lat":"21.43387290379729","lng":"-157.7889295623659","alt":"132.0005802325904"},
-{"lat":"21.43391806071057","lng":"-157.7889295626211","alt":"132.0005798377097"},
-{"lat":"21.43396321762361","lng":"-157.7889295628763","alt":"132.000583384186"},
-{"lat":"21.4340083745364","lng":"-157.7889295631314","alt":"132.0005908710882"},
-{"lat":"21.43405353144895","lng":"-157.7889295633866","alt":"132.0006022993475"},
-{"lat":"21.43409868836125","lng":"-157.7889295636418","alt":"132.000617668964"},
-{"lat":"21.4341438452733","lng":"-157.788929563897","alt":"132.0006369762123"},
-{"lat":"21.43418900218512","lng":"-157.7889295641521","alt":"132.000660228543"},
-{"lat":"21.4342341590967","lng":"-157.7889295644074","alt":"132.0006874175742"},
-{"lat":"21.43427931600803","lng":"-157.7889295646625","alt":"132.0007185498253"},
-{"lat":"21.43432447291912","lng":"-157.7889295649177","alt":"132.0007536206394"},
-{"lat":"21.43436962982997","lng":"-157.7889295651729","alt":"132.0007926346734"},
-{"lat":"21.43441478674056","lng":"-157.7889295654281","alt":"132.0008355891332"},
-{"lat":"21.43445994365091","lng":"-157.7889295656832","alt":"132.0008824830875"},
-{"lat":"21.43445994365091","lng":"-157.7889295656832","alt":"132.0008824830875"},
-{"lat":"21.43443284964559","lng":"-157.7889006271977","alt":"132.0008141463622"},
-{"lat":"21.43440575563517","lng":"-157.7888716887228","alt":"132.0007486399263"},
-{"lat":"21.43437866161966","lng":"-157.7888427502587","alt":"132.000685961917"},
-{"lat":"21.43435156759907","lng":"-157.7888138118051","alt":"132.0006261132658"},
-{"lat":"21.43432447357338","lng":"-157.7887848733623","alt":"132.0005690930411"},
-{"lat":"21.43429737954261","lng":"-157.7887559349302","alt":"132.0005149021745"},
-{"lat":"21.43427028550675","lng":"-157.7887269965087","alt":"132.0004635406658"},
-{"lat":"21.4342431914658","lng":"-157.7886980580979","alt":"132.0004150066525"},
-{"lat":"21.43421609741976","lng":"-157.7886691196978","alt":"132.0003693057224"},
-{"lat":"21.43418900336863","lng":"-157.7886401813084","alt":"132.000326430425"},
-{"lat":"21.43416190931242","lng":"-157.7886112429297","alt":"132.000286385417"},
-{"lat":"21.43413481525111","lng":"-157.7885823045616","alt":"132.0002491688356"},
-{"lat":"21.43410772118472","lng":"-157.7885533662042","alt":"132.0002147816122"},
-{"lat":"21.43408062711323","lng":"-157.7885244278575","alt":"132.000183224678"},
-{"lat":"21.43405353303666","lng":"-157.7884954895216","alt":"132.0001544943079"},
-{"lat":"21.434026438955","lng":"-157.7884665511962","alt":"132.0001285951585"},
-{"lat":"21.43399934486826","lng":"-157.7884376128816","alt":"132.0001055235043"},
-{"lat":"21.43397225077642","lng":"-157.7884086745776","alt":"132.0000852812082"},
-{"lat":"21.43394515667949","lng":"-157.7883797362843","alt":"132.00006786827"},
-{"lat":"21.43391806257748","lng":"-157.7883507980017","alt":"132.0000532846898"},
-{"lat":"21.43389096847038","lng":"-157.7883218597298","alt":"132.0000415295362"},
-{"lat":"21.43386387435819","lng":"-157.7882929214686","alt":"132.0000326037407"},
-{"lat":"21.43383678024091","lng":"-157.788263983218","alt":"132.0000265073031"},
-{"lat":"21.43380968611854","lng":"-157.7882350449782","alt":"132.0000232411548"},
-{"lat":"21.43378259199108","lng":"-157.788206106749","alt":"132.0000228015706"},
-{"lat":"21.43375549785854","lng":"-157.7881771685305","alt":"132.0000251913443"},
-{"lat":"21.43372840372091","lng":"-157.7881482303226","alt":"132.0000304114074"},
-{"lat":"21.43370130957819","lng":"-157.7881192921255","alt":"132.0000384589657"},
-{"lat":"21.43367421543038","lng":"-157.788090353939","alt":"132.0000493377447"}
-]
+
 
 def findPoi():
     print('\n ------->')
@@ -376,257 +249,382 @@ if __name__ == "__main__":
             assert drone(
                 FlyingStateChanged(state="hovering", _timeout=5)
                 >> moveTo(21.43378258952731, -157.7882350477468, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> findPoi()
+                >> findPoi(0)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378258971239, -157.7882350475352, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(1)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378258989746, -157.7882350473236, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(2)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259008253, -157.7882350471119, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(3)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4337825902676, -157.7882350469003, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(4)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259045268, -157.7882350466886, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(5)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259063775, -157.788235046477, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(6)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259082282, -157.7882350462654, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(7)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259100789, -157.7882350460537, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(8)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259119296, -157.7882350458421, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(9)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259137803, -157.7882350456304, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(10)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4337825915631, -157.7882350454188, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(11)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259174817, -157.7882350452072, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(12)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259193324, -157.7882350449956, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(13)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259211831, -157.7882350447839, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(14)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259230337, -157.7882350445723, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(15)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259230337, -157.7882350445723, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(16)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259230337, -157.7882350445723, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(17)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259230337, -157.7882350445723, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(18)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259230337, -157.7882350445723, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(19)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259230337, -157.7882350445723, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(20)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259230337, -157.7882350445723, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(21)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43382774908902, -157.7882350446139, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(22)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43387290587442, -157.7882350446554, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(23)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43391806265958, -157.7882350446969, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(24)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4339632194445, -157.7882350447385, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(25)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43400837622917, -157.78823504478, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(26)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4340535330136, -157.7882350448215, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(27)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43409868979779, -157.7882350448631, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(28)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43414384658173, -157.7882350449046, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(29)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43418900336543, -157.7882350449461, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(30)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43423416014888, -157.7882350449877, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(31)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4342793169321, -157.7882350450292, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(32)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43432447371506, -157.7882350450708, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(33)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43436963049779, -157.7882350451123, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(34)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478728027, -157.7882350451539, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(35)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478728027, -157.7882350451539, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(36)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478723443, -157.788283275566, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(37)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4344147871747, -157.7883315059781, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(38)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478710107, -157.7883797363901, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(39)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478701356, -157.7884279668023, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(40)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478691216, -157.7884761972144, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(41)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478679686, -157.7885244276264, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(42)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478666768, -157.7885726580386, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(43)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4344147865246, -157.7886208884507, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(44)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478636763, -157.7886691188627, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(45)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478636763, -157.7886691188627, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(46)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43436962969169, -157.7886594726959, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(47)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43432447300071, -157.788649826532, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(48)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43427931629468, -157.7886401803709, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(49)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43423415957363, -157.7886305342128, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(50)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43418900283754, -157.7886208880576, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(51)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43414384608641, -157.7886112419053, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(52)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43409868932025, -157.788601595756, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(53)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43405353253906, -157.7885919496095, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(54)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43400837574283, -157.7885823034659, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(55)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43400837574283, -157.7885823034659, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(56)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43396321893156, -157.7885726573253, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(57)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43391806210527, -157.7885630111876, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(58)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43387290526393, -157.7885533650528, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(59)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43382774840756, -157.7885437189208, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(60)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259153616, -157.7885340727919, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(61)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43373743464972, -157.7885244266658, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(62)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43369227774824, -157.7885147805426, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(63)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43364712083173, -157.7885051344223, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(64)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196390019, -157.788495488305, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(65)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196390019, -157.788495488305, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(66)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196377935, -157.7885437185861, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(67)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196364461, -157.7885919488672, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(68)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196349598, -157.7886401791483, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(69)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196333346, -157.7886884094293, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(70)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196315705, -157.7887366397105, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(71)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196296675, -157.7887848699916, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(72)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196276256, -157.7888331002726, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(73)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196254448, -157.7888813305537, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(74)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196231251, -157.7889295608348, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(75)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43360196231251, -157.7889295608348, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(76)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43364711922725, -157.78892956109, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(77)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43369227614174, -157.7889295613452, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(78)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43373743305599, -157.7889295616004, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(79)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378258997, -157.7889295618555, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(80)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43382774688376, -157.7889295621107, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(81)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43387290379729, -157.7889295623659, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(82)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43391806071057, -157.7889295626211, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(83)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43396321762361, -157.7889295628763, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(84)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4340083745364, -157.7889295631314, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(85)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43405353144895, -157.7889295633866, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(86)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43409868836125, -157.7889295636418, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(87)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4341438452733, -157.788929563897, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(88)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43418900218512, -157.7889295641521, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(89)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4342341590967, -157.7889295644074, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(90)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43427931600803, -157.7889295646625, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(91)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43432447291912, -157.7889295649177, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(92)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43436962982997, -157.7889295651729, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(93)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43441478674056, -157.7889295654281, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(94)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43445994365091, -157.7889295656832, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(95)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43445994365091, -157.7889295656832, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(96)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43443284964559, -157.7889006271977, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(97)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43440575563517, -157.7888716887228, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(98)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43437866161966, -157.7888427502587, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(99)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43435156759907, -157.7888138118051, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(100)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43432447357338, -157.7887848733623, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(101)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43429737954261, -157.7887559349302, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(102)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43427028550675, -157.7887269965087, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(103)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.4342431914658, -157.7886980580979, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(104)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43421609741976, -157.7886691196978, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(105)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43418900336863, -157.7886401813084, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(106)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43416190931242, -157.7886112429297, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(107)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43413481525111, -157.7885823045616, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(108)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43410772118472, -157.7885533662042, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(109)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43408062711323, -157.7885244278575, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(110)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43405353303666, -157.7884954895216, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(111)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.434026438955, -157.7884665511962, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(112)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43399934486826, -157.7884376128816, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(113)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43397225077642, -157.7884086745776, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(114)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43394515667949, -157.7883797362843, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(115)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43391806257748, -157.7883507980017, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(116)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43389096847038, -157.7883218597298, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(117)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43386387435819, -157.7882929214686, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(118)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43383678024091, -157.788263983218, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(119)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43380968611854, -157.7882350449782, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(120)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43378259199108, -157.788206106749, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(121)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43375549785854, -157.7881771685305, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(122)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43372840372091, -157.7881482303226, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(123)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43370130957819, -157.7881192921255, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(124)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.43367421543038, -157.788090353939, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> findPoi(125)
                 >> moveToChanged(status="DONE")
 
             ).wait().success()
