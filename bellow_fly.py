@@ -4,7 +4,7 @@ import math
 import olympe
 from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy, moveTo
 from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
-from olympe.messages.ardrone3.PilotingState import (
+from olympe.messages.ardrone3.PilotingState import 
     PositionChanged,
     SpeedChanged,
     AttitudeChanged,
@@ -13,7 +13,7 @@ from olympe.messages.ardrone3.PilotingState import (
     FlyingStateChanged,
     NavigateHomeStateChanged,
     moveToChanged
-)
+    
 from d2 import d2
 from d3 import d3
 from d4 import d4
