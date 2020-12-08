@@ -2,7 +2,6 @@
 
 import math
 import olympe
-from haversine import haversine, Unit
 from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy, moveTo
 from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
 from olympe.messages.ardrone3.PilotingState import (
