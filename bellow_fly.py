@@ -2,16 +2,26 @@
 
 import math
 import olympe
+from haversine import haversine, Unit
 from olympe.messages.ardrone3.Piloting import TakeOff, Landing, moveBy, moveTo
 from olympe.enums.ardrone3.Piloting import MoveTo_Orientation_mode
-from olympe.messages.ardrone3.PilotingState import PositionChanged, SpeedChanged, AttitudeChanged, AltitudeAboveGroundChanged, AlertStateChanged, FlyingStateChanged, NavigateHomeStateChanged, moveToChanged
-
+from olympe.messages.ardrone3.PilotingState import (
+    PositionChanged,
+    SpeedChanged,
+    AttitudeChanged,
+    AltitudeAboveGroundChanged,
+    AlertStateChanged,
+    FlyingStateChanged,
+    NavigateHomeStateChanged,
+    moveToChanged
+)
 from d2 import d2
 from d3 import d3
 from d4 import d4
 from d5 import d5
 from d6 import d6
 from d7 import d7
+
 
 # working subscription - drone leader takes off and moves away
 # casey takes off after drone leader takes off and will follow leaders position
