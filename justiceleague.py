@@ -15,20 +15,12 @@ from olympe.messages.ardrone3.PilotingState import (
     NavigateHomeStateChanged,
     moveToChanged
 )
-from d2 import d2
-from d3 import d3
-from d4 import d4
-from d5 import d5
-from d6 import d6
-from d7 import d7
-
 
 # working subscription - drone leader takes off and moves away
 # casey takes off after drone leader takes off and will follow leaders position
 # this does a square flight pattern
 
 olympe.log.update_config({"loggers": {"olympe": {"level": "WARNING"}}})
-poiIndex = 0
 
 def findOffset(lat,lng,n,e):
     earthRadius=6378137
@@ -70,8 +62,6 @@ def makeLineFormation(lat,lng):
     # leonardo = findOffset(lat,lng,0,0) 
     casey = findOffset(lat,lng,-20,0) 
     return casey
-
-
 
 DRONE_IP = "10.202.0.1"
 casey_ip = "10.202.1.1"
@@ -128,99 +118,56 @@ class FlightListener(olympe.EventListener):
 
     @olympe.listen_event(PositionChanged())
     def onPositionChanged(self, event, scheduler):
-        global poiIndex
-        poiIndex += 1
-        # lat = event.args["latitude"]
-        # lon = event.args["longitude"]
-        # c_poi = (lat, lon)
-        # poi = (21.371518, -157.71161)
+        lat = event.args["latitude"]
+        lon = event.args["longitude"]
+        c_poi = (lat, lon)
+        poi = (21.371518, -157.71161)
+        print('\n ------->')
+        print('\n ------->')
+        print('\n ------->')
+        meters = haversine(poi, c_poi, unit='m')
+        print(meters)
+        print(meters < 2)
         print('\n ------->')
         print('\n ------->')
         print('\n ------->')
 
-        #print(poiIndex)
+        two_lat = event.args["latitude"]
+        two_lon = event.args["longitude"]
 
-        print('\n ------->')
-        print('\n ------->')
-        print('\n ------->')
-
-        # two_lat = event.args["latitude"]
-        # two_lon = event.args["longitude"]
-
-        # if meters < 8:
-        #     casey(moveToChanged(status="CANCELED")
-        #         >> moveTo(21.370950, -157.709998, 10, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        #         >> moveToChanged(status="DONE")
-        #     )
-        #     donatello(moveToChanged(status="CANCELED")
-        #         >> moveTo(21.370950, -157.709998, 20, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        #         >> moveToChanged(status="DONE")
-        #     )
-        #     leonardo(moveToChanged(status="CANCELED")
-        #         >> moveTo(21.370950, -157.709998, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-        #         >> moveToChanged(status="DONE")
-        #     )
-        #     two_lat = 21.370950
-        #     two_lon = -157.709998
+        if meters < 8:
+            casey(moveToChanged(status="CANCELED")
+                >> moveTo(21.370950, -157.709998, 10, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveToChanged(status="DONE")
+            )
+            donatello(moveToChanged(status="CANCELED")
+                >> moveTo(21.370950, -157.709998, 20, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveToChanged(status="DONE")
+            )
+            leonardo(moveToChanged(status="CANCELED")
+                >> moveTo(21.370950, -157.709998, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveToChanged(status="DONE")
+            )
+            two_lat = 21.370950
+            two_lon = -157.709998
 
         
-        # casey_coords = findOffset(two_lat,two_lon,-5,0)
-        # donatello_coords = findOffset(two_lat,two_lon,5,0)
-        # leonardo_coords = findOffset(two_lat,two_lon,0,5)
+        casey_coords = findOffset(two_lat,two_lon,-5,0)
+        donatello_coords = findOffset(two_lat,two_lon,5,0)
+        leonardo_coords = findOffset(two_lat,two_lon,0,5)
 
-        # michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-10)
-        # raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],10,10)
-        # splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-10,-10)
-        
-        donatello(
-            moveTo(
-                float(d2[poiIndex]["lat"]),
-                float(d2[poiIndex]["lng"]),
-                15,
-                MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        leonardo(
-            moveTo(
-                float(d3[poiIndex]["lat"]),
-                float(d3[poiIndex]["lng"]),
-                15,
-                MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        michelangelo(
-            moveTo(
-                float(d4[poiIndex]["lat"]),
-                float(d4[poiIndex]["lng"]),
-                15,
-                MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        raphael(
-            moveTo(
-                float(d5[poiIndex]["lat"]),
-                float(d5[poiIndex]["lng"]),
-                15,
-                MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        splinter(
-            moveTo(
-                float(d6[poiIndex]["lat"]),
-                float(d6[poiIndex]["lng"]),
-                15,
-                MoveTo_Orientation_mode.TO_TARGET, 0.0))
-
-
-        casey(
-            moveTo(
-                float(d7[poiIndex]["lat"]),
-                float(d7[poiIndex]["lng"]),
-                15,
-                MoveTo_Orientation_mode.TO_TARGET, 0.0))
-
-        
+        michelangelo_coords = findOffset(event.args["latitude"],event.args["longitude"],0,-10)
+        raphael_coords = findOffset(event.args["latitude"],event.args["longitude"],10,10)
+        splinter_coords = findOffset(event.args["latitude"],event.args["longitude"],-10,-10)
 
 
         
-        # casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 20, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # michelangelo(moveTo(michelangelo_coords[0], michelangelo_coords[1], 25, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # raphael(moveTo(raphael_coords[0], raphael_coords[1], 30, MoveTo_Orientation_mode.TO_TARGET, 0.0))
-        # splinter(moveTo(splinter_coords[0], splinter_coords[1], 35, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        casey(moveTo(casey_coords[0], casey_coords[1], 10, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        donatello(moveTo(donatello_coords[0], donatello_coords[1], 15, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        leonardo(moveTo(leonardo_coords[0], leonardo_coords[1], 20, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        michelangelo(moveTo(michelangelo_coords[0], michelangelo_coords[1], 25, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        raphael(moveTo(raphael_coords[0], raphael_coords[1], 30, MoveTo_Orientation_mode.TO_TARGET, 0.0))
+        splinter(moveTo(splinter_coords[0], splinter_coords[1], 35, MoveTo_Orientation_mode.TO_TARGET, 0.0))
 
 
 
@@ -309,37 +256,21 @@ if __name__ == "__main__":
             ).wait().success()
             assert drone(
                 FlyingStateChanged(state="hovering", _timeout=5)
-                >> moveTo(21.36945383, -157.7133445, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.371518652227294, -157.71239, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
-                >> moveTo(21.37028804, -157.7134336, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.371518652227294, -157.7116182859902, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
-                >> moveTo(21.37040696, -157.7134463, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.3708, -157.7116182859902, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
-                >> moveTo(21.37055568, -157.7134622, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.370081347772704, -157.7116182859902, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
-                >> moveTo(21.37079381, -157.7134876, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.370081347772704, -157.71239, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
-                >> moveTo(21.37096092, -157.7135054, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.370081347772704, -157.7131617140098, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
-                >> moveTo(21.37136676, -157.7135488, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.3708, -157.7131617140098, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
-                >> moveTo(21.37236059, -157.7128414, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-                >> moveTo(21.37262856, -157.7126507, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-                >> moveTo(21.37273558, -157.7125745, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-                >> moveTo(21.37300355, -157.7123838, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-                >> moveTo(21.3731374, -157.7122885, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-                >> moveTo(21.37327125, -157.7121933, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-                >> moveTo(21.37303895, -157.7118213, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-                >> moveTo(21.37155529, -157.7122354, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
-                >> moveToChanged(status="DONE")
-                >> moveTo(21.36980861, -157.712723, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.371518652227294, -157.7131617140098, 15, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
             ).wait().success()
             drone(Landing()).wait()
