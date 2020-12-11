@@ -11,7 +11,7 @@
     with_kalamos="0"
     sdcard_serial="__undefined__"
     product_pro="0"/>
-  <pose>16 0 0.2 0 0 0</pose>
+  <pose>8 0 0.2 0 0 0</pose>
   <interface>eth1</interface>
   <!-- 'wlan0' may need to be replaced the actual wifi interface name -->
   <stolen_interface>wlan0:eth0:192.168.42.1/24</stolen_interface>
