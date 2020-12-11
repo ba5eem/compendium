@@ -309,7 +309,7 @@ if __name__ == "__main__":
             ).wait().success()
             assert drone(
                 FlyingStateChanged(state="hovering", _timeout=5)
-                >> moveTo(21.36945383, -157.7133445, 80, MoveTo_Orientation_mode.TO_TARGET, 0.0)
+                >> moveTo(21.36945383, -157.7133445, 11, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
                 >> moveTo(21.37028804, -157.7134336, 80, MoveTo_Orientation_mode.TO_TARGET, 0.0)
                 >> moveToChanged(status="DONE")
