@@ -13,8 +13,8 @@
       </camera>
     </gui>
     <spherical_coordinates>
-      <latitude_deg>21.433782</latitude_deg>
-      <longitude_deg>-157.788235</longitude_deg>
+      <latitude_deg>21.37115</latitude_deg>
+      <longitude_deg>-157.7151037</longitude_deg>
     </spherical_coordinates>
     <physics type="ode">
       <real_time_update_rate>1000</real_time_update_rate>
